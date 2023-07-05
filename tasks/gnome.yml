@@ -1,0 +1,15 @@
+- name: Copy wallpaper file
+  copy: src=files/wallpaper.jpg dest=/home/{{ username }}/.wallpaper.jpg owner={{ username }} group={{ username }} mode=600
+
+- name: Set GNOME wallpaper
+  become_user: {{ username }}
+  dconf: key="/org/gnome/desktop/background/picture-uri" value="'file:///home/{{ username }}/.wallpaper.jpg'"
+
+- name: Copy lockscreenfile
+  become_user: {{ username }}
+  copy: src=files/lockscreen.jpg dest=/home/{{ username }}/.lockscreen.jpg owner={{ username }} group={{ username }} mode=600
+
+- name: Set lock screen background
+  become_user: {{ username }}
+  dconf: key="/org/gnome/desktop/screensaver/picture-uri" value="'file:///home/{{ username }}/.lockscreen.jpg'"
+
