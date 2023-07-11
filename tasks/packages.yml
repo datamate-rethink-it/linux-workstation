@@ -1,0 +1,48 @@
+---
+
+###
+
+- name: Remove libre office apt package
+  become: true
+  ansible.builtin.apt:
+    name:
+      - libreoffice-common
+      - libreoffice-core
+      - libreoffice-gnome
+      - libreoffice-gtk3
+      - libreoffice-help-common
+      - libreoffice-help-en-us
+      - libreoffice-style-colibre
+      - libreoffice-style-elemtary
+    state: absent
+
+- name: Remove firefox esr
+  ansible.builtin.apt:
+    name:
+      - firefoy-esr
+#    state: absent
+
+###
+- name: Install flatpak packages
+  become: true
+  ansible.builtin.apt:
+    name:
+      - flatpak
+      - gnome-software-plugin-flatpak
+    state: present
+
+- name: Add the flathub flatpak repository remote
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
+
+- name: Install Apps
+  community.general.flatpak:
+    name:
+      - com.google.Chrome
+      - org.mozilla.firefox
+      - org.mozilla.Thunderbird
+      - org.libreoffice.LibreOffice
+    state: present
+    remote: flathub

@@ -2,10 +2,13 @@
 
 - hosts: localhost
   become: true
-  pre_tasks:
-    - name: update repositories
-      apt: update_cache=yes
+  become_method: enable
+
+#  pre_tasks:
+#    - name: update repositories
+#      become: true
+#      apt: update_cache=yes
 
   tasks:
-    - include: tasks/packages.yml
-    - include: tasks/gnome.yml
+    - include_tasks: tasks/packages.yml
+    - include_tasks: tasks/gnome.yml
