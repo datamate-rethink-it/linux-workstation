@@ -2,13 +2,17 @@
 
 - hosts: localhost
   become: true
-  become_method: enable
 
-#  pre_tasks:
-#    - name: update repositories
-#      become: true
-#      apt: update_cache=yes
+  pre_tasks:
+    - name: update repositories
+      become: true
+      apt: update_cache=yes
 
+  vars_prompt:
+    - name: username
+      prompt: What is your linux username?
+      private: false
+  
   tasks:
     - include_tasks: tasks/packages.yml
     - include_tasks: tasks/gnome.yml
