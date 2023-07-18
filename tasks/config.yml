@@ -1,0 +1,19 @@
+---
+
+- name: Set Chrome Flatpack permissions for PWA install
+  ansible.builtin.command: flatpak override com.google.Chrome --filesystem=~/.local/share/
+
+- name: Copy wallpaper file
+  ansible.builtin.copy: "src=files/wallpaper.jpg dest=/home/{{ ansible_user_id }}/.wallpaper.jpg owner={{ ansible_user_id }} group={{ ansible_user_id }} mode=600"
+
+- name: Set GNOME wallpaper
+  become_user: "{{ ansible_user_id }}"
+  community.general.dconf: key="/org/gnome/desktop/background/picture-uri" value="'file:///home/{{ ansible_user_id }}/.wallpaper.jpg'"
+
+- name: Copy lockscreenfile
+  become_user: "{{ ansible_user_id }}"
+  ansible.builtin.copy: src=files/lockscreen.jpg dest=/home/{{ ansible_user_id }}/.lockscreen.jpg owner={{ ansible_user_id }} group={{ ansible_user_id }} mode=600
+
+- name: Set lock screen background
+  become_user: "{{ ansible_user_id }}"
+  community.general.dconf: key="/org/gnome/desktop/screensaver/picture-uri" value="'file:///home/{{ ansible_user_id }}/.lockscreen.jpg'"

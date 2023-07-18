@@ -1,57 +1,13 @@
 ---
 
-###
-
-- name: Remove libre office apt package
-  ansible.builtin.apt:
-    name:
-      - libreoffice-common
-      - libreoffice-core
-      - libreoffice-gnome
-      - libreoffice-gtk3
-      - libreoffice-help-common
-      - libreoffice-help-en-us
-      - libreoffice-style-colibre
-      - libreoffice-style-elemtary
-    state: absent
-
-- name: Remove evolution
-  ansible.builtin.apt:
-    name:
-      - evolution
-      - evolution-exchange
-      - evolution-plugins
-      - evolution-common
-      - evolution-webcal
-    state: absent
-    
-- name: Remove some gnome apt packages
-  ansible.builtin.apt:
-    name:
-      - firefox-esr
-      - gnome-text-editor
-      - gedit
-      - yelp
-      - gnome-games
-      - transmission-gtk
-      - gnome-maps
-      - malcontent
-    state: absent
-    
-###
-- name: Install python-is-python3
-  ansible.builtin.apt:
-    name:
-      - python-is-python3
-      - python3-psutil
-    state: present
-
 - name: Install flatpak packages
   ansible.builtin.apt:
     name:
       - flatpak
       - gnome-software-plugin-flatpak
     state: present
+
+###
 
 - name: Add the flathub flatpak repository remote
   community.general.flatpak_remote:
@@ -62,6 +18,7 @@
 - name: Install flatpak apps
   community.general.flatpak:
     name:
+      - ca.desrt.dconf-editor
       - com.google.Chrome
       - org.mozilla.firefox
       - org.mozilla.Thunderbird
@@ -69,5 +26,12 @@
       - org.kde.kwrite
       - org.gimp.GIMP
       - org.inkscape.Inkscape
+      - com.visualstudio.code
     state: present
     remote: flathub
+
+###
+
+- name: Install Teamviewer .deb package from the internet
+  ansible.builtin.apt:
+    deb: https://download.teamviewer.com/download/linux/teamviewer_amd64.deb

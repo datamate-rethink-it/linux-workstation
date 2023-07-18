@@ -8,11 +8,24 @@
       become: true
       apt: update_cache=yes
 
-  vars_prompt:
-    - name: username
-      prompt: What is your linux username?
-      private: false
-  
   tasks:
-    - include_tasks: tasks/packages.yml
-    - include_tasks: tasks/gnome.yml
+
+    - name: Install python-is-python3
+      ansible.builtin.apt:
+        name:
+          - python-is-python3
+          - python3-psutil
+        state: present
+
+
+    - name: Include tasks/remove.yml in play
+      ansible.builtin.include_tasks:
+        file: tasks/remove.yml
+
+    - name: Include tasks/packages.yml in play
+      ansible.builtin.include_tasks:
+        file: tasks/packages.yml
+
+    - name: Include tasks/config.yml in play
+      ansible.builtin.include_tasks:
+        file: tasks/config.yml
