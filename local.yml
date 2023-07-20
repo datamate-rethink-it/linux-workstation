@@ -10,6 +10,10 @@
 
   tasks:
 
+    - name: Print return information from the previous task
+      ansible.builtin.debug:
+        var: user
+
     - name: Install python-is-python3
       ansible.builtin.apt:
         name:
