@@ -12,14 +12,23 @@
     state: present
   become: true
 
-- name: Install flatpak packages
+- name: Install sublime apt package
   ansible.builtin.apt:
     name:
       - sublime-text
     state: present
     update_cache: true
 
-- name: Install flatpak packages
+###
+
+- name: install gnome-extensions-cli
+  community.general.pipx:
+    name: gnome-extensions-cli
+    state: present
+
+###
+
+- name: Install flatpak apt packages
   ansible.builtin.apt:
     name:
       - flatpak
