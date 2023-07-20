@@ -1,6 +1,9 @@
 # linux-workstation
 manage my own personal debian desktop enviroment with $ansible-pull
 
+# use
+$ ansible-pull -U https://github.com/anconrad/linux-workstation -e "user=$USER"
+
 # first prep before $ansible-pull
 - added main user to sudo and reboot ($PATH only includes usermod if  escalated via "$su -")
 - 
@@ -9,5 +12,3 @@ manage my own personal debian desktop enviroment with $ansible-pull
 - install git via $sudo apt install git
 
 - install ansible ?via venv
-
-

@@ -10,15 +10,16 @@
 
   tasks:
 
-    - name: Print return information from the previous task
+    - name: Value of user var
       ansible.builtin.debug:
         var: user
 
-    - name: Install python-is-python3
+    - name: Install python packages for dedicated enviroment
       ansible.builtin.apt:
         name:
           - python-is-python3
           - python3-psutil
+          - pipx
         state: present
 
 
