@@ -19,7 +19,6 @@
         name:
           - python-is-python3
           - python3-psutil
-          - pipx
         state: present
 
 
@@ -34,3 +33,7 @@
     - name: Include tasks/config.yml in play
       ansible.builtin.include_tasks:
         file: tasks/config.yml
+
+    - name: Include tasks/gnome.yml in play
+      ansible.builtin.include_tasks:
+        file: tasks/gnome.yml

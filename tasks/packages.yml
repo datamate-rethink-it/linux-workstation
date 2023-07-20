@@ -21,18 +21,10 @@
 
 ###
 
-- name: install gnome-extensions-cli
-  community.general.pipx:
-    name: gnome-extensions-cli
-    state: present
-
-###
-
 - name: Install flatpak apt packages
   ansible.builtin.apt:
     name:
       - flatpak
-      - gnome-software-plugin-flatpak
     state: present
 
 ###
