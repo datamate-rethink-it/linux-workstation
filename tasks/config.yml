@@ -8,6 +8,7 @@
   ansible.builtin.command: flatpak override com.google.Chrome --filesystem=~/.local/share/
 
 - name: Copy wallpaper file
+  become_user: "{{ ansible_user_id }}"
   ansible.builtin.copy: "src=files/wallpaper.jpg dest=/home/{{ ansible_user_id }}/.wallpaper.jpg owner={{ ansible_user_id }} group={{ ansible_user_id }} mode=600"
 
 - name: Set GNOME wallpaper
