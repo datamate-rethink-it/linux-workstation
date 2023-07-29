@@ -32,10 +32,6 @@
           - xz-utils
         state: present
 
-  
-
-###
-
     - name: Include tasks/remove.yml in play
       ansible.builtin.include_tasks:
         file: tasks/remove.yml
