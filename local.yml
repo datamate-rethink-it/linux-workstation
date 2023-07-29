@@ -15,7 +15,7 @@
         repo_url: deb https://download.sublimetext.com/ apt/stable/
       - name: code
         key: https://packages.microsoft.com/keys/microsoft.asc
-        repo_url: deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/packages.microsoft.gpg] https://packages.microsoft.com/repos/code stable main
+        repo_url: deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft.asc] https://packages.microsoft.com/repos/code stable main
 
   tasks:
     - name: Install python packages for dedicated enviroment
