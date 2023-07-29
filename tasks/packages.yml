@@ -39,6 +39,9 @@
     - https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
     - https://code.visualstudio.com/docs/?dv=linux64_deb
     - https://www.sublimetext.com/download_thanks?target=x64-deb
+  clean: yes
+  update_cache: yes
+
 
 - name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release
   ansible.builtin.get_url:
