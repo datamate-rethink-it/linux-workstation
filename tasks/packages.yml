@@ -30,24 +30,24 @@
     state: present
     remote: flathub
 
-- name: somerepo | no apt key
+- name: write the keys into /etc/apt/keyrings/
   ansible.builtin.get_url:
     url: "{{ item.key }}"
     dest: "/etc/apt/keyrings/"
-  loop: "{{ apt_package_req }}"
+  loop: "{{ apt_packages }}"
 
 - name: Add apt repository for the package
   apt_repository:
     repo: "{{ item.repo_url }}"
     state: present
-  loop: "{{ apt_package_req }}"
+  loop: "{{ apt_packages }}"
 
 - name: Install apt packages
   apt:
     name: "{{ item.name }}"
     state: present
     update_cache: true
-  loop: "{{ apt_package_req }}"
+  loop: "{{ apt_packages }}"
 
 
 - name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release
