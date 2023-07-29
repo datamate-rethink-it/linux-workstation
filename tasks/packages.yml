@@ -33,14 +33,8 @@
 - name: somerepo | no apt key
   ansible.builtin.get_url:
     url: "{{ item.key }}"
-    dest: "/etc/apt/keyrings/{{ item.name }}.asc"
+    dest: "/etc/apt/keyrings/"
   loop: "{{ apt_package_req }}"
-
-# - name: Add apt key for the package repositories
-#   apt_key:
-#     url: "{{ item.key }}"
-#     state: present
-#   loop: "{{ apt_package_req }}"
 
 - name: Add apt repository for the package
   apt_repository:

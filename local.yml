@@ -7,7 +7,7 @@
     - name: update repositories
       become: true
       apt: update_cache=yes
-  
+
   vars:
     apt_package_req:
       - name: sublime-text
