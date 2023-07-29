@@ -56,5 +56,5 @@
 - name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release
   ansible.builtin.get_url:
     url: https://www.vmware.com/go/getworkstation-linux
-    dest: ~/Downloads/VMware-Workstation-Install/
+    dest: /usr/local/sbin/
     mode: -rwxr-xr-x
