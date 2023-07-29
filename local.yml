@@ -16,6 +16,9 @@
       - name: code
         key: https://packages.microsoft.com/keys/microsoft.asc
         repo_url: deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft.asc] https://packages.microsoft.com/repos/code stable main
+      - name: teamviewer
+        key: https://linux.teamviewer.com/pubkey/currentkey.asc
+        repo_url: deb [signed-by=/usr/share/keyrings/teamviewer-keyring.gpg] https://linux.teamviewer.com/deb stable main
 
   tasks:
     - name: Install python packages for dedicated enviroment

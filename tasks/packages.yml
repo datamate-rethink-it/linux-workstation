@@ -49,9 +49,6 @@
     update_cache: true
   loop: "{{ apt_package_req }}"
 
-- name: Install .deb packages from the internet without official flatpack releases
-  ansible.builtin.apt:
-    deb: https://download.teamviewer.com/download/linux/teamviewer_amd64.deb
 
 - name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release
   ansible.builtin.get_url:
