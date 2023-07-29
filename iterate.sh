@@ -5,7 +5,7 @@
 set -euxo pipefail
 
 git add .
-git commit -m "iterate"
+git commit -m "iterate" --allow-empty
 git push 
 
 ansible-pull -U https://github.com/anconrad/linux-workstation -e "user=$USER"
