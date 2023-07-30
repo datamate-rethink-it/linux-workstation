@@ -33,14 +33,14 @@
     url: "{{ item.key }}"
     dest: "/etc/apt/keyrings/"
   loop: "{{ apt_packages_present }}"
-  when: item.key != ""
+  when: item.key is defined and != ""
 
 - name: Add apt repository for the package
   apt_repository:
     repo: "{{ item.repo_url }}"
     state: present
   loop: "{{ apt_packages_present }}"
-  when: item.repo_url != ""
+  when: item.repo_url is defined and != ""
 
 - name: Install apt packages
   apt:
@@ -48,7 +48,7 @@
     state: present
     update_cache: true
   loop: "{{ apt_packages_present }}"
-  when: item.name != ""
+  when: item.name is defined and != ""
 
 # Remove apt package logic
 - name: Remove apt packages
@@ -57,14 +57,14 @@
     state: absent
     update_cache: true
   loop: "{{ apt_packages_absent }}"
-  when: item.name != ""
+  when: item.name is defined and != ""
 
 - name: Remove apt repository for the package
   apt_repository:
     repo: "{{ item.repo_url }}"
     state: present
   loop: "{{ apt_packages_absent }}"
-  when: item.repo_url != ""
+  when: item.repo_url is defined and != ""
 
 
 - name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release
