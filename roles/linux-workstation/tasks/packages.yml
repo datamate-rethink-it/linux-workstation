@@ -1,5 +1,14 @@
 ---
 
+tasks:
+  - name: Install python packages for dedicated enviroment
+    ansible.builtin.apt:
+      name:
+        - python-is-python3
+        - python3-psutil
+        - xz-utils
+      state: present
+
 ###
 
 - name: Install flatpak apt packages
@@ -41,12 +50,14 @@
     url: "{{ item.key }}"
     dest: "/etc/apt/keyrings/"
   loop: "{{ apt_packages }}"
+  when: item.key != ""
 
 - name: Add apt repository for the package
   apt_repository:
     repo: "{{ item.repo_url }}"
     state: present
   loop: "{{ apt_packages }}"
+  when: item.repo_url != ""
 
 - name: Install apt packages
   apt:
@@ -54,6 +65,7 @@
     state: present
     update_cache: true
   loop: "{{ apt_packages }}"
+  when: item.name != ""
 
 
 - name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release

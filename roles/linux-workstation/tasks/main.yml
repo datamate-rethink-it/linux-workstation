@@ -1,3 +1,15 @@
-- name: Print a message
-  ansible.builtin.debug:
-    msg: "this task runs"
+- name: Include tasks/remove.yml in play
+  ansible.builtin.include_tasks:
+    file: tasks/remove.yml
+
+- name: Include tasks/packages.yml in play
+  ansible.builtin.include_tasks:
+    file: tasks/packages.yml
+
+- name: Include tasks/config.yml in play
+  ansible.builtin.include_tasks:
+    file: tasks/config.yml
+
+- name: Include tasks/gnome.yml in play
+  ansible.builtin.include_tasks:
+    file: tasks/gnome.yml
