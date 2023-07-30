@@ -1,24 +1,6 @@
 ---
 
 
-- name: Install python packages for dedicated enviroment
-  ansible.builtin.apt:
-    name:
-      - python-is-python3
-      - python3-psutil
-      - xz-utils
-    state: present
-
-###
-
-- name: Install flatpak apt packages
-  ansible.builtin.apt:
-    name:
-      - flatpak
-    state: present
-
-###
-
 - name: Add the flathub flatpak repository remote
   community.general.flatpak_remote:
     name: flathub
@@ -39,24 +21,25 @@
     state: present
     remote: flathub
 
-- name: Install flatpak apps
+- name: remove unoffical vscode flatpack
   community.general.flatpak:
     name:
       - com.visualstudio.code
     state: absent
 
+# Add apt package logic
 - name: write the keys into /etc/apt/keyrings/
   ansible.builtin.get_url:
     url: "{{ item.key }}"
     dest: "/etc/apt/keyrings/"
-  loop: "{{ apt_packages }}"
+  loop: "{{ apt_packages_present }}"
   when: item.key != ""
 
 - name: Add apt repository for the package
   apt_repository:
     repo: "{{ item.repo_url }}"
     state: present
-  loop: "{{ apt_packages }}"
+  loop: "{{ apt_packages_present }}"
   when: item.repo_url != ""
 
 - name: Install apt packages
@@ -64,8 +47,24 @@
     name: "{{ item.name }}"
     state: present
     update_cache: true
-  loop: "{{ apt_packages }}"
+  loop: "{{ apt_packages_present }}"
   when: item.name != ""
+
+# Remove apt package logic
+- name: Remove apt packages
+  apt:
+    name: "{{ item.name }}"
+    state: absent
+    update_cache: true
+  loop: "{{ apt_packages_absent }}"
+  when: item.name != ""
+
+- name: Remove apt repository for the package
+  apt_repository:
+    repo: "{{ item.repo_url }}"
+    state: present
+  loop: "{{ apt_packages_absent }}"
+  when: item.repo_url != ""
 
 
 - name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release
