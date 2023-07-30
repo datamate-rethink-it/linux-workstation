@@ -1,32 +1,6 @@
 ---
 
-
-- name: Add the flathub flatpak repository remote
-  community.general.flatpak_remote:
-    name: flathub
-    state: present
-    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
-
-- name: Install flatpak apps
-  community.general.flatpak:
-    name:
-      - ca.desrt.dconf-editor
-      - com.google.Chrome
-      - org.mozilla.firefox
-      - org.mozilla.Thunderbird
-      - org.libreoffice.LibreOffice
-      - org.gimp.GIMP
-      - org.inkscape.Inkscape
-    state: present
-    remote: flathub
-
-- name: remove unoffical vscode flatpack
-  community.general.flatpak:
-    name:
-      - com.visualstudio.code
-      - org.kde.kwrite
-    state: absent
-
+# add and remove could be pulled together if iterated over a nested dict list / fine for now
 # Add apt package logic
 - name: write the keys into /etc/apt/keyrings/
   ansible.builtin.get_url:
@@ -62,11 +36,33 @@
 - name: Remove apt repository for the package
   apt_repository:
     repo: "{{ item.repo_url }}"
-    state: present
+    state: absent
   loop: "{{ apt_packages_absent }}"
   when: (item.repo_url is defined) and (item.repo_url != "")
 
+# flatpak / flathub
+- name: Add the flathub flatpak repository remote
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://flathub.org/repo/flathub.flatpakrepo
 
+- name: Install flatpak apps
+  community.general.flatpak:
+    name: "{{ item.name }}"
+    state: present
+    remote: flathub
+  loop: "{{ flathub_packages_present }}"
+  when: (item.name is defined) and (item.name != "")
+
+- name: Remove flatpack apps
+  community.general.flatpak:
+    name: "{{ item.name }}"
+    state: absent
+  loop: "{{ flathub_packages_absent }}"
+  when: (item.name is defined) and (item.name != "")
+
+# vmware workstation
 - name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release
   ansible.builtin.get_url:
     url: https://www.vmware.com/go/getworkstation-linux

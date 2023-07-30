@@ -37,3 +37,16 @@ apt_packages_absent:
   - name: transmission-gtk
   - name: gnome-maps
   - name: malcontent
+
+flathub_packages_present:
+  - name: ca.desrt.dconf-editor
+  - name: com.google.Chrome
+  - name: org.mozilla.firefox
+  - name: org.mozilla.Thunderbird
+  - name: org.libreoffice.LibreOffice
+  - name: org.gimp.GIMP
+  - name: org.inkscape.Inkscape
+
+flathub_packages_absent:
+  - name: com.visualstudio.code
+  - name: org.kde.kwrite
