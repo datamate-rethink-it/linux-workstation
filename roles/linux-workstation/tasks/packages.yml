@@ -15,7 +15,6 @@
       - org.mozilla.firefox
       - org.mozilla.Thunderbird
       - org.libreoffice.LibreOffice
-      - org.kde.kwrite
       - org.gimp.GIMP
       - org.inkscape.Inkscape
     state: present
@@ -25,6 +24,7 @@
   community.general.flatpak:
     name:
       - com.visualstudio.code
+      - org.kde.kwrite
     state: absent
 
 # Add apt package logic

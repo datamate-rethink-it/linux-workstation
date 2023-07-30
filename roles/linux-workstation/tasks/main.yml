@@ -1,6 +1,4 @@
-- name: Include tasks/remove.yml in play
-  ansible.builtin.include_tasks:
-    file: tasks/remove.yml
+
 
 - name: Include tasks/packages.yml in play
   ansible.builtin.include_tasks:
