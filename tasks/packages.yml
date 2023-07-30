@@ -30,6 +30,12 @@
     state: present
     remote: flathub
 
+- name: Install flatpak apps
+  community.general.flatpak:
+    name:
+      - com.visualstudio.code
+    state: absent
+
 - name: write the keys into /etc/apt/keyrings/
   ansible.builtin.get_url:
     url: "{{ item.key }}"
