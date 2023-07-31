@@ -12,10 +12,6 @@
     name: gnome-extensions-cli
     state: present
 
-- name: Shell Extenions
-  ansible.builtin.command:
-    cmd: pipx ensurepath
-
 ###
 
 # https://extensions.gnome.org/extension/1462/panel-date-format/
@@ -23,7 +19,7 @@
 
 - name: Install Shell Extenions
   ansible.builtin.command:
-    cmd: gext install 1462 1160
+    shell: gext install 1462 1160
 
 - name: Set Panel Date Format
   become_user: "{{ user }}"
