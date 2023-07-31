@@ -12,6 +12,10 @@
     name: gnome-extensions-cli
     state: present
 
+- name: Shell Extenions
+  ansible.builtin.command:
+    cmd: pipx ensurepath
+
 ###
 
 # https://extensions.gnome.org/extension/1462/panel-date-format/
