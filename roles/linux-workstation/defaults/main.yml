@@ -3,7 +3,6 @@ apt_packages_present:
   - name: python3-psutil
   - name: flatpak
 
-
   - name: code
     key: https://packages.microsoft.com/keys/microsoft.asc
     repo_url: deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft.asc] https://packages.microsoft.com/repos/code stable main
