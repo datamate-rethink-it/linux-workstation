@@ -7,10 +7,10 @@ apt_packages_present:
     key: https://packages.microsoft.com/keys/microsoft.asc
     repo_url: deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft.asc] https://packages.microsoft.com/repos/code stable main
     repo_filename: vscode
-  - name: teamviewer
-    key: https://linux.teamviewer.com/pubkey/currentkey.asc
-    repo_url: deb [signed-by=/usr/share/keyrings/teamviewer-keyring.gpg] https://linux.teamviewer.com/deb stable main
-    repo_filename: teamviewer
+  # - name: teamviewer
+  #   key: https://linux.teamviewer.com/pubkey/currentkey.asc
+  #   repo_url: deb [signed-by=/usr/share/keyrings/teamviewer-keyring.gpg] https://linux.teamviewer.com/deb stable main
+  #   repo_filename: teamviewer
 
 apt_packages_absent:
   - name: libreoffice-common
