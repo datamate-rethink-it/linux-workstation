@@ -14,6 +14,6 @@ manage my own personal debian desktop enviroment with $ansible-pull
 
 list&task is with dme
 
-- [x] Kickoff fixes (README & iterate.sh) before dme takes over
-- [] populate this list
-- [] task 2
+[x] Kickoff fixes (README & iterate.sh) before dme takes over
+[ ] populate this list & order it with aco
+[ ] task 2
