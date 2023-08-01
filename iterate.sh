@@ -4,6 +4,8 @@
 
 set -euxo pipefail
 
+cd "$(dirname "$0")"
+
 git add .
 git commit -m "iterate" --allow-empty
 git push
