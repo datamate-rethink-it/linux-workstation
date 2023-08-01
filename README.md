@@ -16,4 +16,5 @@ list&task is with dme
 
 - [x] Kickoff fixes (README & iterate.sh) before dme takes over
 - [ ] populate this list & order it with aco
-- [ ] task 2
+- [ ] add installation of task/taskfile https://taskfile.dev/installation/ deb or tar.gz via github latest / no repos that i know of so needs another isntall logic/method
+https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
