@@ -3,11 +3,20 @@ manage a debian desktop enviroment with $ansible-pull
 ziel: kein artefakt und kein provisionerungsserver
 
 ### usage
+`su -l` 
+`usermod -aG sudo $USER             # Für $USER muss der Name des Users eingesetzt werden`            
+
+###
+Alternaitv:
+adduser USERNAME sudo
+###
+
+
+Rechner neu starten
+
 `wget https://github.com/datamate-rethink-it/linux-workstation/raw/main/bootstrap.sh`
-
-
-
-`ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "user=$USER" --clean`
+`sudo chmod +x bootstrap.sh`
+`./bootstrap.sh`
 
 ### requirements before $ansible-pull
 - add user to sudo and reboot? ($PATH only includes usermod if  escalated via "$su -")
@@ -15,6 +24,7 @@ ziel: kein artefakt und kein provisionerungsserver
 - install git via apt
 
 - add all non free sources https://wiki.debian.org/SourcesList or via Software&Updates
+
 ### TODO
 
 list&task is with dme
