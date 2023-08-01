@@ -9,3 +9,11 @@ manage my own personal debian desktop enviroment with $ansible-pull
 - add all non free sources https://wiki.debian.org/SourcesList or via Software&Updates
 - install ansible via apt / just to bootstrap
 - install git via apt
+
+### TODO
+
+list&task is with dme
+
+- [x] Kickoff fixes (README & iterate.sh) before dme takes over
+- [] populate this list
+- [] task 2
