@@ -14,33 +14,54 @@ ziel: kein artefakt und kein provisionerungsserver
 9. Name des Benutzers: $USER
 10. Benutzername: $USER (nur Kleinbuchstaben)
 11. Festplatte partionieren: 
-    - Geführt - gesamte Platte verwenden (ext4)
+    - Geführt - vollständige Festplatte verwenden
+    - Festplatte auswählen
+    - Alle Dateien auf eine Partition
     - SWAP-Partition löschen 
     - boot-Partition erstellen (500MB ext4)
-    - Datenträger verschlüsseln
+    - Verschlüsselte Datenträger konfigurieren
+    - Verschlüsselte Datenträger erzeugen --> / als Einbindungspunkt der Partition auswählen
 12. Netzwerkspiegel nicht verwenden
-13. Nicht an der Paketumfrage teilnehmen
+13. Nicht an der Paketverwendungserfassung teilnehmen
 14. GNOME installieren
 
 
 ### ansible-pull usage
-1. `su -l` 
+1. ```
+   su -l
+   ```
 
-2. `adduser USERNAME sudo`            
+2. ```
+   adduser USERNAME sudo
+   ```            
 
 3. restart pc
 
 4. go in `/etc/apt/sources.list` and add the content of the [sources.list](https://github.com/datamate-rethink-it/linux-workstation/blob/main/files/sources.list)
 
-5. `sudo apt update` & `sudo apt upgrade`
+5. ```
+   sudo apt update
+   ```
 
-6. `sudo apt install wget`
+6. ```
+   sudo apt upgrade
+   ```
 
-7. `wget https://github.com/datamate-rethink-it/linux-workstation/raw/main/bootstrap.sh`
+7. ```
+   sudo apt install wget
+   ```
 
-8. `sudo chmod +x bootstrap.sh`
+8. ```
+   wget https://github.com/datamate-rethink-it/linux-workstation/raw/main/bootstrap.sh
+   ```
 
-9. `./bootstrap.sh`
+9. ```
+   sudo chmod +x bootstrap.sh
+   ```
+
+10. ```
+    ./bootstrap.sh
+    ```
 
 ### requirements before $ansible-pull
 - add user to sudo and reboot? ($PATH only includes usermod if  escalated via "$su -")
