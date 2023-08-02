@@ -4,7 +4,8 @@ ziel: kein artefakt und kein provisionerungsserver
 
 ### usage
 `su -l` 
-`usermod -aG sudo $USER             # Für $USER muss der Name des Users eingesetzt werden`            
+
+`usermod -aG sudo $USER  #Für $USER muss der Name des Users eingesetzt werden`            
 
 ###
 Alternaitv:
@@ -15,7 +16,9 @@ adduser USERNAME sudo
 Rechner neu starten
 
 `wget https://github.com/datamate-rethink-it/linux-workstation/raw/main/bootstrap.sh`
+
 `sudo chmod +x bootstrap.sh`
+
 `./bootstrap.sh`
 
 ### requirements before $ansible-pull
