@@ -1,25 +1,46 @@
 ## linux-workstation
-manage a debian desktop enviroment with $ansible-pull
+manage a debian12 desktop enviroment with $ansible-pull
 ziel: kein artefakt und kein provisionerungsserver
 
-### usage
-`su -l` 
+### basis debian12 installation
+1. Graphical install
+2. Sprache: Deutsch
+3. Standort: Deutschland
+4. Tastatur: Deutsch
+5. Netzwerk-Scnittstelle: Ethernet
+6. Rechnername: $USER-debian
+7. Domain-Name: leer lassen
+8. Rot-Passwort: 
+9. Name des Benutzers: $USER
+10. Benutzername: $USER (nur Kleinbuchstaben)
+11. Festplatte partionieren: 
+    - Geführt - gesamte Platte verwenden (ext4)
+    - SWAP-Partition löschen 
+    - boot-Partition erstellen (500MB ext4)
+    - Datenträger verschlüsseln
+12. Netzwerkspiegel nicht verwenden
+13. Nicht an der Paketumfrage teilnehmen
+14. GNOME installieren
 
-`usermod -aG sudo $USER  #Für $USER muss der Name des Users eingesetzt werden`            
 
-###
-Alternaitv:
-adduser USERNAME sudo
-###
+### ansible-pull usage
+1. `su -l` 
 
+2. `adduser USERNAME sudo`            
 
-Rechner neu starten
+3. restart pc
 
-`wget https://github.com/datamate-rethink-it/linux-workstation/raw/main/bootstrap.sh`
+4. go in `/etc/apt/sources.list` and add the content of the [sources.list](https://github.com/datamate-rethink-it/linux-workstation/blob/main/files/sources.list)
 
-`sudo chmod +x bootstrap.sh`
+5. `sudo apt update` & `sudo apt upgrade`
 
-`./bootstrap.sh`
+6. `sudo apt install wget`
+
+7. `wget https://github.com/datamate-rethink-it/linux-workstation/raw/main/bootstrap.sh`
+
+8. `sudo chmod +x bootstrap.sh`
+
+9. `./bootstrap.sh`
 
 ### requirements before $ansible-pull
 - add user to sudo and reboot? ($PATH only includes usermod if  escalated via "$su -")
@@ -36,20 +57,5 @@ list&task is with dme
 - [ ] populate this list & order it with aco
 - [ ] add installation of task/taskfile https://taskfile.dev/installation/ deb or tar.gz via github latest / no repos that I know of so needs another install logic/method
 https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
-- [ ] bootstrap.sh
+- [x] bootstrap.sh
 - [ ]
-
-
-Debian Install Definition
-- Systemsprache Deutsch
-- GNOME Desktop
-- keine Swap Partition
-- one big standard ext4 partiton
-- verschlüsselte partition (selbst setzbar ?)
-- definieren und mitgeben ? ^^ -> kommandozeilenparameter, unintended debian installation.
-- 
-
-
-
-
-
