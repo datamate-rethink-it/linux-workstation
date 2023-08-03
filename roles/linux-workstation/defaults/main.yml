@@ -9,6 +9,7 @@ flathub_packages_present:
   - name: org.geany.Geany
   - name: org.gnome.TextEditor
 
+
 apt_packages_present:
   - name: python-is-python3
   - name: python3-psutil
@@ -35,9 +36,11 @@ apt_packages_present:
     repo_url: deb [signed-by=/etc/apt/keyrings/teamviewer] https://linux.teamviewer.com/deb stable main
     repo_filename: teamviewer
 
+
 apt_deb_present:
   - name: task
     deb_path: https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
+
 
 apt_packages_absent:
   - name: libreoffice-common
@@ -63,3 +66,8 @@ apt_packages_absent:
   - name: transmission-gtk
   - name: gnome-maps
   - name: malcontent
+  - name: gnome-chess
+  - name: aisleriot
+  - name: gnome-nibbles
+
+

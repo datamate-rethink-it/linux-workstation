@@ -10,15 +10,16 @@
   when: (item.key is defined) and (item.key != "")
 
 - name: Add apt repository for the package
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "{{ item.repo_url }}"
     filename: "{{ item.repo_filename }}"
     state: present
+    update_cache: false
   loop: "{{ apt_packages_present }}"
   when: (item.repo_url is defined) and (item.repo_url != "")
 
 - name: Install apt packages
-  apt:
+  ansible.builtin.apt:
     name: "{{ item.name }}"
     state: present
     update_cache: true
@@ -40,7 +41,7 @@
   when: (item.name is defined) and (item.name != "")
 
 - name: Remove apt repository for the package
-  apt_repository:
+  ansible.builtin.apt_repository:
     repo: "{{ item.repo_url }}"
     filename: "{{ item.repo_filename }}"
     state: absent
