@@ -20,7 +20,7 @@ apt_packages_present:
     repo_filename: hashicorp
   - name: teamviewer
     key: https://linux.teamviewer.com/pubkey/currentkey.asc
-    repo_url: deb [signed-by=/usr/share/keyrings/teamviewer] https://linux.teamviewer.com/deb stable main
+    repo_url: deb [signed-by=/etc/apt/keyrings/teamviewer] https://linux.teamviewer.com/deb stable main
     repo_filename: teamviewer
 
 apt_packages_absent:
