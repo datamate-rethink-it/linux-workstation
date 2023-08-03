@@ -10,4 +10,4 @@ git add .
 git commit -m "iterate" --allow-empty
 git push
 
-ansible-pull -U https://github.com/anconrad/linux-workstation -e "user=$USER"
+ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "user=$USER" --clean
