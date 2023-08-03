@@ -1,20 +1,27 @@
 apt_packages_present:
   - name: python-is-python3
   - name: python3-psutil
+  - name: gnupg
+  - name: software-properties-common
+  - name: curl
   - name: flatpak
 
   - name: seafile-gui
     key: https://linux-clients.seafile.com/seafile.asc
-    repo_url: deb [arch=amd64 signed-by=/etc/apt/keyrings/seafile.asc] https://linux-clients.seafile.com/seafile-deb/{{ ansible_distribution_release }}/ stable main
+    repo_url: deb [arch=amd64 signed-by=/etc/apt/keyrings/seafile] https://linux-clients.seafile.com/seafile-deb/{{ ansible_distribution_release }}/ stable main
     repo_filename: seafile
   - name: code
     key: https://packages.microsoft.com/keys/microsoft.asc
-    repo_url: deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft.asc] https://packages.microsoft.com/repos/code stable main
-    repo_filename: vscode
-  # - name: teamviewer
-  #   key: https://linux.teamviewer.com/pubkey/currentkey.asc
-  #   repo_url: deb [signed-by=/usr/share/keyrings/teamviewer-keyring.gpg] https://linux.teamviewer.com/deb stable main
-  #   repo_filename: teamviewer
+    repo_url: deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft] https://packages.microsoft.com/repos/code stable main
+    repo_filename: microsoft
+  - name: terraform
+    key: https://apt.releases.hashicorp.com/gpg
+    repo_url: deb [signed-by=/etc/apt/keyrings/hashicorp] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main
+    repo_filename: hashicorp
+  - name: teamviewer
+    key: https://linux.teamviewer.com/pubkey/currentkey.asc
+    repo_url: deb [signed-by=/usr/share/keyrings/teamviewer] https://linux.teamviewer.com/deb stable main
+    repo_filename: teamviewer
 
 apt_packages_absent:
   - name: libreoffice-common

@@ -5,7 +5,7 @@
 - name: write the keys into /etc/apt/keyrings/
   ansible.builtin.get_url:
     url: "{{ item.key }}"
-    dest: "/etc/apt/keyrings/"
+    dest: "/etc/apt/keyrings/{{ item.repo_filename }}"
   loop: "{{ apt_packages_present }}"
   when: (item.key is defined) and (item.key != "")
 
