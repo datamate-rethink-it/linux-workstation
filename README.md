@@ -48,10 +48,13 @@ Define a debian12 desktop enviroment without an artifact or provisioning-server 
 
 ### todo
 - [ ] streamline after debian install / bootstrap.sh & command
-- [ ] add installation of task/taskfile https://taskfile.dev/installation/ deb or tar.gz via github latest / no repos that we know of, so needs another install logic/method
-https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
-- [ ] add installation of terraform
-- [ ] debug installation of teamviewer
 - [ ] add shell extensions and pinned icons (gnome configuration)
+  - add min, max close window buttons in the top right corner
 - [ ] explore preseed config to streamline debian install
 - [ ] remove all non wanted apps (games, ..) still on the system from base debian + gnome install
+
+- [x] add installation of task/taskfile https://taskfile.dev/installation/ deb or tar.gz via github latest / no repos that we know of, so needs another install logic/method
+https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
+- [x] add installation of terraform
+- [x] add installation of seafile
+- [x] debug installation of teamviewer

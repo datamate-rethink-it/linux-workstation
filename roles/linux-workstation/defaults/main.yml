@@ -1,8 +1,20 @@
+flathub_packages_present:
+  - name: ca.desrt.dconf-editor
+  - name: com.google.Chrome
+  - name: org.mozilla.firefox
+  - name: org.mozilla.Thunderbird
+  - name: org.libreoffice.LibreOffice
+  - name: org.gimp.GIMP
+  - name: org.inkscape.Inkscape
+  - name: org.geany.Geany
+  - name: org.gnome.TextEditor
+
 apt_packages_present:
   - name: python-is-python3
   - name: python3-psutil
   - name: gnupg
   - name: software-properties-common
+  - name: libcanberra-gtk-module
   - name: curl
   - name: flatpak
 
@@ -22,6 +34,10 @@ apt_packages_present:
     key: https://linux.teamviewer.com/pubkey/currentkey.asc
     repo_url: deb [signed-by=/etc/apt/keyrings/teamviewer] https://linux.teamviewer.com/deb stable main
     repo_filename: teamviewer
+
+apt_deb_present:
+  - name: task
+    deb_path: https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
 
 apt_packages_absent:
   - name: libreoffice-common
@@ -47,14 +63,3 @@ apt_packages_absent:
   - name: transmission-gtk
   - name: gnome-maps
   - name: malcontent
-
-flathub_packages_present:
-  - name: ca.desrt.dconf-editor
-  - name: com.google.Chrome
-  - name: org.mozilla.firefox
-  - name: org.mozilla.Thunderbird
-  - name: org.libreoffice.LibreOffice
-  - name: org.gimp.GIMP
-  - name: org.inkscape.Inkscape
-  - name: org.geany.Geany
-  - name: org.gnome.TextEditor
