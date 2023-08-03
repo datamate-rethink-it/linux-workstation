@@ -26,25 +26,25 @@ Define a debian12 desktop enviroment without an artifact or provisioning-server 
 
 
 ### ansible-pull usage
-1. `$ su -l`
+1. `su -l`
 
-2. `$ adduser USERNAME sudo`
+2. `adduser USERNAME sudo`
 
 3. ***reboot***
 
 4. go in `/etc/apt/sources.list` and add the content of [sources.list](https://github.com/datamate-rethink-it/linux-workstation/blob/main/files/sources.list)
 
-5. `$ sudo apt update`
+5. `sudo apt update`
 
-6. `$ sudo apt upgrade`
+6. `sudo apt upgrade`
 
-7. `$ sudo apt install wget`
+7. `sudo apt install wget`
 
-8. `$ wget https://github.com/datamate-rethink-it/linux-workstation/raw/main/bootstrap.sh`
+8. `wget https://github.com/datamate-rethink-it/linux-workstation/raw/main/bootstrap.sh`
 
-9. `$ sudo chmod +x bootstrap.sh`
+9. `sudo chmod +x bootstrap.sh`
 
-10. `$ ./bootstrap.sh`
+10. `./bootstrap.sh`
 
 ### todo
 - [ ] streamline after debian install / bootstrap.sh & command
