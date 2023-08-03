@@ -1,4 +1,9 @@
 #!/bin/bash
+#
+# bootstrap to $ ansible-pull
+
+set -euxo pipefail
+
 
 sudo apt install git -y &&
 sudo apt install ansible -y &&

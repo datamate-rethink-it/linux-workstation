@@ -1,6 +1,5 @@
 ## linux-workstation
-manage a debian12 desktop enviroment with $ansible-pull
-ziel: kein artefakt und kein provisionerungsserver
+Define a debian12 desktop enviroment without artifact or provisioning-server via $ ansible-pull
 
 ### basis debian12 installation
 1. Graphical install
@@ -10,14 +9,14 @@ ziel: kein artefakt und kein provisionerungsserver
 5. Netzwerk-Scnittstelle: Ethernet
 6. Rechnername: $USER-debian
 7. Domain-Name: leer lassen
-8. Rot-Passwort: 
+8. Root-Passwort:
 9. Name des Benutzers: $USER
 10. Benutzername: $USER (nur Kleinbuchstaben)
-11. Festplatte partionieren: 
+11. Festplatte partionieren:
     - Geführt - vollständige Festplatte verwenden
     - Festplatte auswählen
     - Alle Dateien auf eine Partition
-    - SWAP-Partition löschen 
+    - SWAP-Partition löschen
     - boot-Partition erstellen (500MB ext4)
     - Verschlüsselte Datenträger konfigurieren
     - Verschlüsselte Datenträger erzeugen --> / als Einbindungspunkt der Partition auswählen
@@ -33,7 +32,7 @@ ziel: kein artefakt und kein provisionerungsserver
 
 2. ```
    adduser USERNAME sudo
-   ```            
+   ```
 
 3. restart pc
 
@@ -63,20 +62,10 @@ ziel: kein artefakt und kein provisionerungsserver
     ./bootstrap.sh
     ```
 
-### requirements before $ansible-pull
-- add user to sudo and reboot? ($PATH only includes usermod if  escalated via "$su -")
-- install ansible via apt / just to bootstrap
-- install git via apt
+### todo
 
-- add all non free sources https://wiki.debian.org/SourcesList or via Software&Updates
-
-### TODO
-
-list&task is with dme
-
-- [x] Kickoff fixes (README & iterate.sh) before dme takes over
-- [ ] populate this list & order it with aco
+- [ ] streamline after debian installer / bootstrap.sh & command
 - [ ] add installation of task/taskfile https://taskfile.dev/installation/ deb or tar.gz via github latest / no repos that I know of so needs another install logic/method
 https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
-- [x] bootstrap.sh
-- [ ]
+
+
