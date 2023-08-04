@@ -8,7 +8,7 @@ flathub_packages_present:
   - name: org.inkscape.Inkscape
   - name: org.geany.Geany
   - name: org.gnome.TextEditor
-
+  - name: io.github.wereturtle.ghostwriter
 
 apt_packages_present:
   - name: python-is-python3
