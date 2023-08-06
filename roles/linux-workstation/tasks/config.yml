@@ -14,7 +14,7 @@
 - name: Download latest JetBrains Font tarball
   ansible.builtin.get_url:
     url: https://api.github.com/repos/JetBrains/JetBrainsMono/zipball
-    dest: /home/{{ user }}/jetbrainsmono.tar.gz
+    dest: /home/{{ user }}/jetbrainsmono.zip
     mode: '0755'
 
 - name: Create a directory if it does not exist
