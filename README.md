@@ -47,9 +47,9 @@ Define a debian12 desktop enviroment without an artifact or provisioning-server 
 10. `./bootstrap.sh`
 
 ### todo
-- [ ] streamline after debian install / bootstrap.sh & command
+- [ ] install jetbrains mono font
 - [ ] add shell extensions and pinned icons (gnome configuration)
-- [ ] install jetbrains mono font and set as default
+- [ ] streamline after debian install / bootstrap.sh & command
 - [ ] explore preseed config to streamline debian install
 
 - [x] add min, max close window buttons in the top right corner & shortcuts
