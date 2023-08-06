@@ -25,9 +25,9 @@
 
 - name: Extract .tgz
   ansible.builtin.unarchive:
-    src: /home/{{ user }}/jetbrainsmono.tar.gz
+    src: /home/{{ user }}/jetbrainsmono.zip
     dest: /home/{{ user }}/jetbrainsmono-font
-    include: "ttf"
+    include: "JetBrainsMono[wght].ttf"
 
 - name: Remove file (delete file)
   ansible.builtin.file:
