@@ -32,3 +32,17 @@
   ansible.builtin.file:
     path: /home/{{ user }}/jetbrainsmono.tar.gz
     state: absent
+
+- name: ensures dir exists
+  file:
+    path: "/usr/share/fonts/truetype/jetbrain-mono"
+    state: directory
+
+- name: Copy each file over that matches the given pattern
+  ansible.builtin.copy:
+    src: "{{ item }}"
+    dest: "/usr/share/fonts/truetype/jetbrain-mono"
+    owner: "root"
+    mode: 0755
+  with_fileglob:
+    - "/home/{{ user }}/jetbrainsmono-font/JetBrains-JetBrainsMono*/fonts/variable/*.ttf"
