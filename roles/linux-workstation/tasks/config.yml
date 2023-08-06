@@ -11,6 +11,8 @@
   become_user: "{{ user }}"
   ansible.builtin.copy: src=./roles/linux-workstation/files/lockscreen.jpg dest=/home/{{ user }}/.lockscreen.jpg owner={{ user }} group={{ user }} mode=600
 
+
+## jet brains mono
 - name: Download latest JetBrains Font tarball
   ansible.builtin.get_url:
     url: https://api.github.com/repos/JetBrains/JetBrainsMono/zipball
