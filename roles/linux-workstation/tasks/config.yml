@@ -27,6 +27,7 @@
   ansible.builtin.unarchive:
     src: /home/{{ user }}/jetbrainsmono.tar.gz
     dest: /home/{{ user }}/jetbrainsmono-font
+    include: "ttf"
 
 - name: Remove file (delete file)
   ansible.builtin.file:
