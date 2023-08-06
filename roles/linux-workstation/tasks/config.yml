@@ -27,6 +27,7 @@
   ansible.builtin.unarchive:
     src: /home/{{ user }}/jetbrainsmono.tar.gz
     dest: /home/{{ user }}/jetbrainsmono-font
+  register: archive_contents
 
 - name: Remove file (delete file)
   ansible.builtin.file:
@@ -45,4 +46,4 @@
     owner: "root"
     mode: 0755
   with_fileglob:
-    - "/home/{{ user }}/jetbrainsmono-font/JetBrains-JetBrainsMono*/fonts/variable/*.ttf"
+    - "/home/{{ user }}/jetbrainsmono-font/{{ archive_contents.files[0] }}/fonts/variable/*.ttf"
