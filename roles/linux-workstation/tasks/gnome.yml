@@ -12,11 +12,6 @@
   become_user: "{{ user }}"
   community.general.dconf: key="/org/gnome/desktop/screensaver/picture-uri" value="'file:///home/{{ user }}/.lockscreen.jpg'"
 
-- name: install gnome-extensions-cli
-  community.general.pipx:
-    name: gnome-extensions-cli
-    state: present
-
 - name: Execute script to set shortcut with gsetting
   become_user: "{{ user }}"
   ansible.builtin.shell: ./roles/linux-workstation/files/gnome-setting.sh

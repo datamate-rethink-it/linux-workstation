@@ -21,13 +21,5 @@ gsettings set org.gnome.desktop.wm.preferences button-layout ":minimize,maximize
 
 ##
 
-###
-
 # https://extensions.gnome.org/extension/1462/panel-date-format/
 # https://extensions.gnome.org/extension/1160/dash-to-panel/
-
-
-
-# - name: Install Shell Extenions
-#   ansible.builtin.command:
-#     shell: gext install 1462 1160
