@@ -23,22 +23,20 @@
     state: directory
     mode: '0755'
 
-- name: Extract .tgz
+- name: Extract .tar.gz
   ansible.builtin.unarchive:
     src: /home/{{ user }}/jetbrainsmono.tar.gz
     dest: /home/{{ user }}/jetbrainsmono-font
     list_files: yes
   register: archive_contents
 
-- debug: 'msg="Subfolder: {{ archive_contents.files[0] }}"'
-
-- name: Remove file (delete file)
+- name: Remove archive (delete file)
   ansible.builtin.file:
     path: /home/{{ user }}/jetbrainsmono.tar.gz
     state: absent
 
 - name: ensures dir exists
-  file:
+  ansible.builtin.file:
     path: "/usr/share/fonts/truetype/jetbrain-mono"
     state: directory
 
@@ -50,3 +48,8 @@
     mode: 0755
   with_fileglob:
     - "/home/{{ user }}/jetbrainsmono-font/{{ archive_contents.files[0] }}/fonts/variable/*.ttf"
+
+- name: Remove extracted archive (delete file)
+  ansible.builtin.file:
+    path: /home/{{ user }}/jetbrainsmono-font
+    state: absent
