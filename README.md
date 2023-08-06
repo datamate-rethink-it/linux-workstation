@@ -47,11 +47,11 @@ Define a debian12 desktop enviroment without an artifact or provisioning-server 
 10. `./bootstrap.sh`
 
 ### todo
-- [ ] install jetbrains mono font
-- [ ] add shell extensions and pinned icons (gnome configuration)
+- [ ] add shell extensions and pinned icons (gnome configuration via standard gnome extension isntall + script)
 - [ ] streamline after debian install / bootstrap.sh & command
 - [ ] explore preseed config to streamline debian install
 
+- [x] install jetbrains mono font
 - [x] add min, max close window buttons in the top right corner & shortcuts
 - [x] add installation of task/taskfile https://taskfile.dev/installation/ deb or tar.gz via github latest / no repos that we know of, so needs another install logic/method
 https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
