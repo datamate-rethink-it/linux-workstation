@@ -29,6 +29,8 @@
     dest: /home/{{ user }}/jetbrainsmono-font
   register: archive_contents
 
+- debug: 'msg="Subfolder: {{ archive_contents }}"'
+
 - name: Remove file (delete file)
   ansible.builtin.file:
     path: /home/{{ user }}/jetbrainsmono.tar.gz
