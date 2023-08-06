@@ -18,6 +18,8 @@ apt_packages_present:
   - name: libcanberra-gtk-module
   - name: curl
   - name: flatpak
+  - name: gnome-software-plugin-flatpak
+  - name: pipx
 
   - name: seafile-gui
     key: https://linux-clients.seafile.com/seafile.asc

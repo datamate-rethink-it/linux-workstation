@@ -7,6 +7,6 @@
   ansible.builtin.include_tasks:
     file: tasks/config.yml
 
-# - name: Include tasks/gnome.yml in play
-#   ansible.builtin.include_tasks:
-#     file: tasks/gnome.yml
+- name: Include tasks/gnome.yml in play
+  ansible.builtin.include_tasks:
+    file: tasks/gnome.yml
