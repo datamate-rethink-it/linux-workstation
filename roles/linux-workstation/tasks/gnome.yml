@@ -12,27 +12,21 @@
   become_user: "{{ user }}"
   community.general.dconf: key="/org/gnome/desktop/screensaver/picture-uri" value="'file:///home/{{ user }}/.lockscreen.jpg'"
 
-- name: Set lock screen background
-  become_user: "{{ user }}"
-  community.general.dconf: key="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/binding" value="<Control><Alt>z"
+- name: install gnome-extensions-cli
+  community.general.pipx:
+    name: gnome-extensions-cli
+    state: present
 
-- name: Set lock screen background
+- name: Execute script to set shortcut with gsetting
   become_user: "{{ user }}"
-  community.general.dconf: key="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/command" value="gnome-terminal"
-
-- name: Set lock screen background
-  become_user: "{{ user }}"
-  community.general.dconf: key="/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom10/name" value="gnome-terminal"
+  ansible.builtin.shell: ./roles/linux-workstation/files/gnome-setting.sh
 
 ###
 
 # https://extensions.gnome.org/extension/1462/panel-date-format/
 # https://extensions.gnome.org/extension/1160/dash-to-panel/
 
-# - name: install gnome-extensions-cli
-#   community.general.pipx:
-#     name: gnome-extensions-cli
-#     state: present
+
 
 # - name: Install Shell Extenions
 #   ansible.builtin.command:
