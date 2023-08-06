@@ -27,9 +27,10 @@
   ansible.builtin.unarchive:
     src: /home/{{ user }}/jetbrainsmono.tar.gz
     dest: /home/{{ user }}/jetbrainsmono-font
+    list_files: yes
   register: archive_contents
 
-- debug: 'msg="Subfolder: {{ archive_contents }}"'
+- debug: 'msg="Subfolder: {{ archive_contents.files[0] }}"'
 
 - name: Remove file (delete file)
   ansible.builtin.file:
