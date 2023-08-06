@@ -17,6 +17,12 @@
     dest: /home/{{ user }}/jetbrainsmono.tar.gz
     mode: '0755'
 
+- name: Create a directory if it does not exist
+  ansible.builtin.file:
+    path: /home/{{ user }}/jetbrainsmono-font
+    state: directory
+    mode: '0755'
+
 - name: Extract .tgz
   ansible.builtin.unarchive:
     src: /home/{{ user }}/jetbrainsmono.tar.gz
