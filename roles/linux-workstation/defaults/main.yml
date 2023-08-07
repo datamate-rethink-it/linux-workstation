@@ -26,8 +26,8 @@ apt_packages_present:
     repo_filename: seafile
   - name: code
     key: https://packages.microsoft.com/keys/microsoft.asc
-    repo_url: deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/microsoft] https://packages.microsoft.com/repos/code stable main
-    repo_filename: microsoft
+    repo_url: deb [arch=amd64,arm64,armhf signed-by=/etc/apt/keyrings/vscode] https://packages.microsoft.com/repos/code stable main
+    repo_filename: vscode
   - name: terraform
     key: https://apt.releases.hashicorp.com/gpg
     repo_url: deb [signed-by=/etc/apt/keyrings/hashicorp] https://apt.releases.hashicorp.com {{ ansible_distribution_release }} main
