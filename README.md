@@ -47,9 +47,9 @@ ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "use
 
 ### todo
 - [ ] add shell extensions and pinned icons (gnome configuration via standard gnome extension isntall + script)
-- [ ] streamline after debian install / bootstrap.sh & command
 - [ ] explore preseed config to streamline debian install
 
+- [x] streamline after debian install / bootstrap.sh & command
 - [x] install jetbrains mono font
 - [x] add min, max close window buttons in the top right corner & shortcuts
 - [x] add installation of task/taskfile https://taskfile.dev/installation/ deb or tar.gz via github latest / no repos that we know of, so needs another install logic/method
