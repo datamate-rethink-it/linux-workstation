@@ -7,11 +7,11 @@ Define a debian12 desktop enviroment without an artifact or provisioning-server 
 3. Standort: Deutschland
 4. Tastatur: Deutsch
 5. Netzwerk-Scnittstelle: Ethernet
-6. Rechnername: $USER-debian
+6. Rechnername: <$user>-debian
 7. Domain-Name: leer lassen
 8. Root-Passwort:
-9. Name des Benutzers: $USER
-10. Benutzername: $USER (nur Kleinbuchstaben)
+9. Name des Benutzers: <$user>
+10. Benutzername: <$user> (nur Kleinbuchstaben)
 11. Festplatte partionieren:
     - Geführt - vollständige Festplatte verwenden
     - Festplatte auswählen
@@ -27,24 +27,18 @@ Define a debian12 desktop enviroment without an artifact or provisioning-server 
 
 ### ansible-pull usage
 1. `su -l`
-
-2. `adduser USERNAME sudo`
-
+2. `adduser <$user> sudo`
 3. ***reboot***
 
 4. go in `/etc/apt/sources.list` and add the content of [sources.list](https://github.com/datamate-rethink-it/linux-workstation/blob/main/files/sources.list)
-
 5. `sudo apt update`
-
 6. `sudo apt upgrade`
 
-7. `sudo apt install wget`
-
-8. `wget https://github.com/datamate-rethink-it/linux-workstation/raw/main/bootstrap.sh`
-
-9. `sudo chmod +x bootstrap.sh`
-
-10. `./bootstrap.sh`
+7. Run ansible-pull as desktop <$user>
+```console
+sudo apt-get -y install git ansible && \
+ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "user=$USER" --clean
+```
 
 ### todo
 - [ ] add shell extensions and pinned icons (gnome configuration via standard gnome extension isntall + script)
