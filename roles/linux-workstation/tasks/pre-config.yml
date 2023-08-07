@@ -1,0 +1,13 @@
+
+- name: Copy sources.list
+  become_user: "{{ user }}"
+  ansible.builtin.copy:
+    src: "./roles/linux-workstation/files/sources.list"
+    dest: "/etc/apt/sources.list"
+    owner: "root"
+    group: "root"
+    mode: "644"
+
+- name: Update repositories
+  ansible.builtin.apt:
+    update_cache: yes

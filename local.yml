@@ -6,7 +6,3 @@
   roles:
     - role: linux-workstation
 
-  # pre_tasks:
-  #   - name: update repositories
-  #     become: true
-  #     apt: update_cache=yes
