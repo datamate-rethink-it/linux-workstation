@@ -32,17 +32,14 @@ https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/
 ### ansible-pull usage
 1. `su -c "/usr/sbin/adduser <$user> sudo"`
 2. `su <$user>`
-3.
+3. change sources.list
 ```
 sudo apt-get install curl && \
-sudo curl https://github.com/datamate-rethink-it/linux-workstation/blob/main/files/sources.list -o sources.list && \
-sudo chmod 644 && chown root: && \
+sudo curl https://raw.githubusercontent.com/datamate-rethink-it/linux-workstation/main/roles/linux-workstation/files/sources.list -o sources.list && \
+sudo chmod 644 sources.list && sudo chown root: sources.list && \
 sudo mv -f sources.list /etc/apt/sources.list
 ```
-<!-- 4. go in `/etc/apt/sources.list` and add the content of [sources.list](https://github.com/datamate-rethink-it/linux-workstation/blob/main/files/sources.list)
-5. `sudo apt update`
-6. `sudo apt upgrade` -->
-7.
+4. run ansible-pull
 ```shellscript
 sudo apt-get -y install git ansible && \
 ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "user=$USER" --clean --ask-become-pass

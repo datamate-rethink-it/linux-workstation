@@ -1,8 +1,4 @@
 
-- name: Include tasks/pre-config.yml in play
-  ansible.builtin.include_tasks:
-    file: tasks/pre-config.yml
-
 - name: Include tasks/packages.yml in play
   ansible.builtin.include_tasks:
     file: tasks/packages.yml
