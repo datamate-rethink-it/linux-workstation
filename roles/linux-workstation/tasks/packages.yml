@@ -18,11 +18,15 @@
   loop: "{{ apt_packages_present }}"
   when: (item.repo_url is defined) and (item.repo_url != "")
 
+- name: Update apt cache
+  ansible.builtin.apt:
+    update_cache: true
+
 - name: Install apt packages
   ansible.builtin.apt:
     name: "{{ item.name }}"
     state: present
-    update_cache: true
+    update_cache: false
   loop: "{{ apt_packages_present }}"
   when: (item.name is defined) and (item.name != "")
 
