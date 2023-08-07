@@ -26,16 +26,16 @@ Define a debian12 desktop enviroment without an artifact or provisioning-server 
 
 
 ### ansible-pull usage
-1. `su -l`
-2. `adduser <$user> sudo`
+1. `su -l`{:.shellscript}
+2. `adduser <$user> sudo`{:.shellscript}
 3. ***reboot***
 
 4. go in `/etc/apt/sources.list` and add the content of [sources.list](https://github.com/datamate-rethink-it/linux-workstation/blob/main/files/sources.list)
-5. `sudo apt update`
-6. `sudo apt upgrade`
+5. `sudo apt update`{:.shellscript}
+6. `sudo apt upgrade`{:.shellscript}
 
-7. Run ansible-pull as desktop <$user>
-```console
+7.
+```shellscript
 sudo apt-get -y install git ansible && \
 ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "user=$USER" --clean
 ```
