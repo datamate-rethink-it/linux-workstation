@@ -16,6 +16,7 @@ apt_packages_present:
   - name: gnupg
   - name: software-properties-common
   - name: libcanberra-gtk-module
+  - name: rsync
   - name: curl
   - name: flatpak
   - name: gnome-software-plugin-flatpak
