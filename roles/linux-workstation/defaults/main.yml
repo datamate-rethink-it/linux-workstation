@@ -9,6 +9,7 @@ flathub_packages_present:
   - name: org.geany.Geany
   - name: org.gnome.TextEditor
   - name: io.github.wereturtle.ghostwriter
+  - name: org.remmina.Remmina
 
 apt_packages_present:
   - name: python-is-python3
