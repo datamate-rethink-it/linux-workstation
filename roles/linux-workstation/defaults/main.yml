@@ -4,12 +4,12 @@ flathub_packages_present:
   - name: org.mozilla.firefox
   - name: org.mozilla.Thunderbird
   - name: org.libreoffice.LibreOffice
-  - name: org.gimp.GIMP
-  - name: org.inkscape.Inkscape
-  - name: org.geany.Geany
-  - name: org.gnome.TextEditor
-  - name: io.github.wereturtle.ghostwriter
-  - name: org.remmina.Remmina
+  - name: org.gimp.GIMP # Pixel Design
+  - name: org.inkscape.Inkscape # Vector Design
+  - name: org.geany.Geany # Basic IDE / Texeditor
+  - name: org.gnome.TextEditor # Basic Texeditor
+  - name: io.github.wereturtle.ghostwriter # Markdown Editor
+  - name: org.remmina.Remmina # RDP Client
 
 apt_packages_present:
   - name: python-is-python3
