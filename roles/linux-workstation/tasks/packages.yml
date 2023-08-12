@@ -1,8 +1,8 @@
 ---
 
-# add and remove could be pulled together if iterated over a nested dict list / fine for now
+# Add and remove could be pulled together if iterated over a nested dict list / fine for now
 # Add apt package logic
-- name: write the keys into /etc/apt/keyrings/
+- name: Write keys into /etc/apt/keyrings/
   ansible.builtin.get_url:
     url: "{{ item.key }}"
     dest: "/etc/apt/keyrings/{{ item.repo_filename }}"
@@ -28,12 +28,20 @@
     state: present
     update_cache: false
   loop: "{{ apt_packages_present }}"
-  when: (item.name is defined) and (item.name != "")
+  when: (item.name is defined) and (item.name != "") and (item.deb_path is undefined)
 
-- name: Install a .deb package
+- name: Install deb packages
   ansible.builtin.apt:
     deb: "{{ item.deb_path }}"
-  loop: "{{ apt_deb_present }}"
+    state: present
+    update_cache: false
+  loop: "{{ apt_packages_present }}"
+  when: (item.deb_path is defined) and (item.deb_path != "")
+
+# - name: Install a .deb package
+#   ansible.builtin.apt:
+#     deb: "{{ item.deb_path }}"
+#   loop: "{{ apt_deb_present }}"
 
 # Remove apt package logic
 - name: Remove apt packages
@@ -74,9 +82,14 @@
   loop: "{{ flathub_packages_absent }}"
   when: (item.name is defined) and (item.name != "")
 
-# vmware workstation
+# VMware Workstation
 - name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release
   ansible.builtin.get_url:
     url: https://www.vmware.com/go/getworkstation-linux
     dest: /usr/local/sbin/
     mode: -rwxr-xr-x
+  register: get_url_results
+
+- name: debug output
+  debug:
+    msg: "{{ get_url_results.stdout }}"

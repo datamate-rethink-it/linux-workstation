@@ -22,6 +22,9 @@ apt_packages_present:
   - name: flatpak
   - name: gnome-software-plugin-flatpak
 
+  - name: task
+    deb_path: https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
+
   - name: seafile-gui
     key: https://linux-clients.seafile.com/seafile.asc
     repo_url: deb [arch=amd64 signed-by=/etc/apt/keyrings/seafile] https://linux-clients.seafile.com/seafile-deb/{{ ansible_distribution_release }}/ stable main
@@ -38,12 +41,6 @@ apt_packages_present:
     key: https://linux.teamviewer.com/pubkey/currentkey.asc
     repo_url: deb [signed-by=/etc/apt/keyrings/teamviewer] https://linux.teamviewer.com/deb stable main
     repo_filename: teamviewer
-
-
-apt_deb_present:
-  - name: task
-    deb_path: https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
-
 
 apt_packages_absent:
   - name: libreoffice-common
@@ -72,5 +69,3 @@ apt_packages_absent:
   - name: gnome-chess
   - name: aisleriot
   - name: gnome-nibbles
-
-

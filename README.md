@@ -46,7 +46,7 @@ ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "use
 ```
 
 ### todo
-- [ ] add shell extensions and pinned icons (gnome configuration via standard gnome extension isntall + script)
+- [ ] add shell extensions and pinned icons (gnome configuration via standard gnome extension install + script)
 - [ ] explore preseed config to streamline debian install
 
 - [x] streamline after debian install / bootstrap.sh & command
