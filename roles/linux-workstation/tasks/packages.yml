@@ -88,8 +88,6 @@
     url: https://www.vmware.com/go/getworkstation-linux
     dest: /usr/local/sbin/
     mode: -rwxr-xr-x
-  register: get_url_results
 
-- name: debug output
-  debug:
-    msg: "{{ get_url_results.stdout }}"
+# to install this package: $ sudo . /usr/local/sbin/<actual-vmware-binary>
+# could be automated via register results - get binary name / call with "--deferred-gtk" option
