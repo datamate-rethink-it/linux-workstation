@@ -27,11 +27,13 @@ https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/
     - Deutschland / deb.debian.org / kein Proxy
 13. Nicht an der Paketverwendungserfassung teilnehmen
 14. Debian desktop enviroment / GNOME / Standard Systemwerkzeuge installieren
-
+15. Install Grub: Ja
+16. **Continue to reboot**
 
 ### ansible-pull usage
-1. `su -c "/usr/sbin/adduser <$user> sudo"`
-2. `su <$user>`
+Login with <$user> / open a terminal
+1. `su -c "/usr/sbin/adduser $USER sudo"`
+2. `su $USER`
 3. change sources.list
 ```
 sudo apt-get install curl && \
@@ -39,15 +41,21 @@ sudo curl https://raw.githubusercontent.com/datamate-rethink-it/linux-workstatio
 sudo chmod 644 sources.list && sudo chown root: sources.list && \
 sudo mv -f sources.list /etc/apt/sources.list
 ```
-4. run ansible-pull
+4. run ansible-pull (BECOME Password = <$user> sudo Password)
 ```shellscript
 sudo apt-get -y install git ansible && \
 ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "user=$USER" --clean --ask-become-pass
 ```
+5. **reboot**
+
+6. Install Shell Extensions and pin Apps
+https://extensions.gnome.org/extension/1462/panel-date-format/
+https://extensions.gnome.org/extension/1160/dash-to-panel/
 
 ### todo
 - [ ] add shell extensions and pinned icons (gnome configuration via standard gnome extension install + script)
 - [ ] explore preseed config to streamline debian install
+- [ ] streamline post install with a wrapper / bootstrap.sh
 
 - [x] streamline after debian install / bootstrap.sh & command
 - [x] install jetbrains mono font

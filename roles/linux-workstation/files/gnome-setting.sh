@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# set keyboard shortcut schema and key values with gsettings
+# set keyboard shortcut schema and hot-key values with gsettings
 
 set -euxo pipefail
 
