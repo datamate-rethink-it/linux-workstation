@@ -56,6 +56,13 @@ https://extensions.gnome.org/extension/1160/dash-to-panel/
 - [ ] add shell extensions and pinned icons (gnome configuration via standard gnome extension install + script)
 - [ ] explore preseed config to streamline debian install
 - [ ] streamline post install with a wrapper / bootstrap.sh
+- [ ] add geany customization
+`sudo flatpak override --env=GTK_THEME=Adwaita:dark org.geany.Geany`
+https://www.geany.org/download/themes/
+/var/lib/flatpak/app/org.geany.Geany/x86_64/stable/active/share/geany/colorschemes/
+- [ ] add ll alias & standard terminal colors
+- [ ] add git plumbing aliases (e.g. delete all local branches without a remote and prune origin)
+`git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done``
 
 - [x] streamline after debian install / bootstrap.sh & command
 - [x] install jetbrains mono font
