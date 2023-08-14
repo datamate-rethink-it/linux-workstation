@@ -63,7 +63,13 @@ https://www.geany.org/download/themes/
 - [ ] add ll alias & standard terminal colors
 - [ ] add git plumbing aliases (e.g. delete all local branches without a remote and prune origin)
 `git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done``
-- [ ] add ssh global config to not strictly check hostkeys for the dev domain
+- [ ] add ssh config to not strictly check hostkeys for the dev domain (rapid host creation and destruction)
+ansible block in file
+`nano ~/.ssh/config`
+Host *infra-code.de
+StrictHostKeyChecking no
+User dev
+
 
 - [x] streamline after debian install / bootstrap.sh & command
 - [x] install jetbrains mono font
