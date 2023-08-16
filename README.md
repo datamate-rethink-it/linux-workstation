@@ -70,6 +70,11 @@ Host *infra-code.de
 StrictHostKeyChecking no
 User dev
 
+- [ ] add ansible schmea higlighting for main.yml files / add to vscode settings.json
+    "files.associations": {
+        "main.yml": "ansible",
+  },
+
 
 - [x] streamline after debian install / bootstrap.sh & command
 - [x] install jetbrains mono font
