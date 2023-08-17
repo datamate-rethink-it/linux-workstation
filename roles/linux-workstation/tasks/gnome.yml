@@ -2,16 +2,25 @@
 
 - name: Set Panel Date Format
   become_user: "{{ user }}"
-  community.general.dconf: key="/org/gnome/shell/extensions/panel-date-format/format" value="'%H:%M   |   %A  %d.%m.%Y'"
+  community.general.dconf:
+    key: "/org/gnome/shell/extensions/panel-date-format/format"
+    value: "'%H:%M   |   %A  %d.%m.%Y'"
 
 - name: Set GNOME wallpaper
   become_user: "{{ user }}"
-  community.general.dconf: key="/org/gnome/desktop/background/picture-uri" value="'file:///home/{{ user }}/.wallpaper.jpg'"
+  community.general.dconf:
+    key: "/org/gnome/desktop/background/picture-uri"
+    value: "'file:///home/{{ user }}/.wallpaper.jpg'"
 
 - name: Set lock screen background
   become_user: "{{ user }}"
-  community.general.dconf: key="/org/gnome/desktop/screensaver/picture-uri" value="'file:///home/{{ user }}/.lockscreen.jpg'"
+  community.general.dconf:
+    key: "/org/gnome/desktop/screensaver/picture-uri"
+    value: "'file:///home/{{ user }}/.lockscreen.jpg'"
 
 - name: Execute script to set shortcut with gsetting
   become_user: "{{ user }}"
   ansible.builtin.shell: ./roles/linux-workstation/files/gnome-setting.sh
+  changed_when: true
+  tags:
+    - skip_ansible_lint

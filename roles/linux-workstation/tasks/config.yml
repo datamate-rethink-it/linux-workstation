@@ -2,15 +2,58 @@
 
 - name: Set Chrome Flatpack permissions for PWA install
   ansible.builtin.command: flatpak override com.google.Chrome --filesystem=~/.local/share/
+  changed_when: true
 
 - name: Copy wallpaper file
   become_user: "{{ user }}"
-  ansible.builtin.copy: "src=./roles/linux-workstation/files/wallpaper.jpg dest=/home/{{ user }}/.wallpaper.jpg owner={{ user }} group={{ user }} mode=600"
+  ansible.builtin.copy:
+    src: ./roles/linux-workstation/files/wallpaper.jpg
+    dest: /home/{{ user }}/.wallpaper.jpg
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: '600'
 
 - name: Copy lockscreenfile
   become_user: "{{ user }}"
-  ansible.builtin.copy: src=./roles/linux-workstation/files/lockscreen.jpg dest=/home/{{ user }}/.lockscreen.jpg owner={{ user }} group={{ user }} mode=600
+  ansible.builtin.copy:
+    src: ./roles/linux-workstation/files/lockscreen.jpg
+    dest: /home/{{ user }}/.lockscreen.jpg
+    owner: '{{ user }}'
+    group: '{{ user }}'
+    mode: '600'
 
+## ssh config
+- name: ssh config directory
+  become_user: "{{ user }}"
+  ansible.builtin.blockinfile:
+    path: '/home/{{ user }}/.ssh/config'
+    create: true
+    mode: '0644'
+    block: |
+      Host *infra-code.de
+      StrictHostKeyChecking no
+      User dev
+
+## bashrc / aliases
+- name: 'configure bashrc'
+  become: yes
+  ansible.builtin.lineinfile:
+    path: '/etc/bash.bashrc'
+    mode: '0644'
+    line: ". /etc/profile.d/global-bashrc.sh"
+
+- name: 'template bashrc'
+  become: yes
+  ansible.builtin.template:
+    src: 'bashrc.jinja2'
+    dest: '/etc/profile.d/global-bashrc.sh'
+    mode: '0644'
+
+- name: Copy branchprune script to /usr/local/bin/ (PATH)
+  ansible.builtin.copy:
+    src: ./roles/linux-workstation/files/branchprune
+    dest: /usr/local/bin/branchprune
+    mode: '0755'
 
 ## jet brains mono
 - name: Download latest JetBrains Font tarball
@@ -41,13 +84,14 @@
   ansible.builtin.file:
     path: "/usr/share/fonts/truetype/jetbrain-mono"
     state: directory
+    mode: '0755'
 
 - name: Copy each file over that matches the given pattern
   ansible.builtin.copy:
     src: "{{ item }}"
     dest: "/usr/share/fonts/truetype/jetbrain-mono"
     owner: "root"
-    mode: 0755
+    mode: '0755'
   with_fileglob:
     - "/home/{{ user }}/jetbrainsmono-font/{{ archive_contents.files[0] }}/fonts/variable/*.ttf"
 

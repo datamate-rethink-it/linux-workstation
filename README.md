@@ -60,22 +60,20 @@ https://extensions.gnome.org/extension/1160/dash-to-panel/
 `sudo flatpak override --env=GTK_THEME=Adwaita:dark org.geany.Geany`
 https://www.geany.org/download/themes/
 /var/lib/flatpak/app/org.geany.Geany/x86_64/stable/active/share/geany/colorschemes/
-- [ ] add ll alias & standard terminal colors
-- [ ] add git plumbing aliases (e.g. delete all local branches without a remote and prune origin)
-`git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done``
-- [ ] add ssh config to not strictly check hostkeys for the dev domain (rapid host creation and destruction)
-ansible block in file
-`nano ~/.ssh/config`
-Host *infra-code.de
-StrictHostKeyChecking no
-User dev
-
 - [ ] add ansible schmea higlighting for main.yml files / add to vscode settings.json
     "files.associations": {
         "main.yml": "ansible",
   },
 
-
+- [x] add ssh config to not strictly check hostkeys for the dev domain (rapid host creation and destruction)
+ansible block in file
+`nano ~/.ssh/config`
+Host *infra-code.de
+StrictHostKeyChecking no
+User dev
+- [x] add ll alias & standard terminal colors
+- [x] add git plumbing alias "branchprune" (e.g. delete all local branches without a remote and prune origin)
+`git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done`
 - [x] streamline after debian install / bootstrap.sh & command
 - [x] install jetbrains mono font
 - [x] add min, max close window buttons in the top right corner & shortcuts
