@@ -60,6 +60,10 @@ https://extensions.gnome.org/extension/1160/dash-to-panel/
 `sudo flatpak override --env=GTK_THEME=Adwaita:dark org.geany.Geany`
 https://www.geany.org/download/themes/
 /var/lib/flatpak/app/org.geany.Geany/x86_64/stable/active/share/geany/colorschemes/
+- [ ] add ansible schmea higlighting for main.yml files / add to vscode settings.json
+    "files.associations": {
+        "main.yml": "ansible",
+  },
 
 - [x] add ssh config to not strictly check hostkeys for the dev domain (rapid host creation and destruction)
 ansible block in file
