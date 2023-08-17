@@ -1,8 +1,8 @@
 ---
 
-- hosts: localhost
+- name: Install Linux Workstation
+  hosts: localhost
   become: true
 
   roles:
     - role: linux-workstation
-
