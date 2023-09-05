@@ -21,6 +21,7 @@ apt_packages_present:
   - name: curl
   - name: flatpak
   - name: gnome-software-plugin-flatpak
+  - name: shutter
 
   - name: task
     deb_path: https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb

@@ -44,7 +44,7 @@
   ansible.builtin.apt:
     name: "{{ item.name }}"
     state: absent
-    update_cache: true
+    update_cache: false
   loop: "{{ apt_packages_absent }}"
   when: (item.name is defined) and (item.name != "")
 
