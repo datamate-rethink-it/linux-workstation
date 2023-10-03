@@ -1,17 +1,20 @@
 flathub_packages_present:
-  - name: ca.desrt.dconf-editor
   - name: com.google.Chrome
   - name: org.mozilla.firefox
   - name: org.mozilla.Thunderbird
   - name: org.libreoffice.LibreOffice
-  - name: org.gimp.GIMP # Pixel Design
-  - name: org.inkscape.Inkscape # Vector Design
-  - name: org.geany.Geany # Basic IDE / Texeditor
-  - name: org.gnome.TextEditor # Basic Texeditor
-  - name: io.github.wereturtle.ghostwriter # Markdown Editor
-  - name: org.remmina.Remmina # RDP Client
+  - name: org.gimp.GIMP # pixel design
+  - name: org.inkscape.Inkscape # vector design
+  - name: org.geany.Geany # basic ide / texeditor
+  - name: org.gnome.TextEditor # basic texeditor
+  - name: io.github.wereturtle.ghostwriter # markdown editor
+  - name: org.remmina.Remmina # rdp client
+  - name: com.github.tchx84.Flatseal # flatpak permissions manager
+  - name: ca.desrt.dconf-editor # gnome config editor
 
 apt_packages_present:
+  - name: flatpak
+  - name: gnome-software-plugin-flatpak
   - name: python-is-python3
   - name: python3-psutil
   - name: gnupg
@@ -19,8 +22,6 @@ apt_packages_present:
   - name: libcanberra-gtk-module
   - name: rsync
   - name: curl
-  - name: flatpak
-  - name: gnome-software-plugin-flatpak
   - name: shutter
 
   - name: task
@@ -42,6 +43,20 @@ apt_packages_present:
     key: https://linux.teamviewer.com/pubkey/currentkey.asc
     repo_url: deb [signed-by=/etc/apt/keyrings/teamviewer] https://linux.teamviewer.com/deb stable main
     repo_filename: teamviewer
+
+binaries_present:
+  - name: hcloud
+    url: https://github.com/hetznercloud/cli/releases/latest/download/hcloud-linux-amd64.tar.gz
+    location: /usr/local/bin/
+    archive: true
+
+    # to install this package: $ sudo ./usr/local/bin/<actual-vmware-binary>
+    # could be automated via register results - get binary name / call with "--deferred-gtk" option
+  - name: vmware-workstation
+    url: https://www.vmware.com/go/getworkstation-linux
+    location: /usr/local/bin/
+    archive: false
+
 
 apt_packages_absent:
   - name: libreoffice-common

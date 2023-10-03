@@ -78,12 +78,29 @@
   loop: "{{ flathub_packages_absent }}"
   when: (item.name is defined) and (item.name != "")
 
-# VMware Workstation
+# Binaries present
 - name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release
   ansible.builtin.get_url:
-    url: https://www.vmware.com/go/getworkstation-linux
-    dest: /usr/local/sbin/
+    url: "{{ item.url }}"
+    dest: "{{ item.location }}"
     mode: -rwxr-xr-x
+  loop: "{{ binaries_present }}"
+  when: (item.name is defined) and (item.name != "")
+  register: binary_download_output
 
-# to install this package: $ sudo . /usr/local/sbin/<actual-vmware-binary>
-# could be automated via register results - get binary name / call with "--deferred-gtk" option
+- name: Debug download output
+  ansible.builtin.debug:
+    var: binary_download_output
+
+# - name: Untar archive
+#   ansible.builtin.unarchive:
+#     src: "{{ item.archive }}"
+#     dest: "{{ item.location }}"
+#     copy: false
+#     owner: "{{ item.owner }}"
+#     group: "{{ item.group }}"
+#     mode: "{{ item.mode }}"
+#   loop: "{{ archives }}"
+#   when: (item.archive is defined) and (item.archive != "") and (item.archive_flag is defined) and (item.archive_flag == true) and (item.location is defined) and (item.location != "")
+
+
