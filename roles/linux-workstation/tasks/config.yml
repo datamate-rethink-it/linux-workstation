@@ -1,7 +1,12 @@
 ---
 
 - name: Set Chrome Flatpack permissions for PWA install
-  ansible.builtin.command: flatpak override com.google.Chrome --filesystem=~/.local/share/
+  become_user: "{{ user }}"
+  ansible.builtin.command: >
+      flatpak override --user
+      --filesystem=~/.local/share/applications:create
+      --filesystem=~/.local/share/icons:create
+      com.google.Chrome
   changed_when: true
 
 - name: Copy wallpaper file

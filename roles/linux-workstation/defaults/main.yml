@@ -45,9 +45,11 @@ apt_packages_present:
     repo_filename: teamviewer
 
 binaries_present:
+  # only files and folders in the include list will be unarchived, archive file will be deleted
   - name: hcloud
     url: https://github.com/hetznercloud/cli/releases/latest/download/hcloud-linux-amd64.tar.gz
     location: /usr/local/bin/
+    include: [hcloud]
     archive: true
 
     # to install this package: $ sudo ./usr/local/bin/<actual-vmware-binary>
@@ -78,6 +80,7 @@ apt_packages_absent:
   - name: gnome-text-editor
   - name: gedit
   - name: yelp
+
   - name: gnome-games
   - name: transmission-gtk
   - name: gnome-maps
@@ -85,3 +88,20 @@ apt_packages_absent:
   - name: gnome-chess
   - name: aisleriot
   - name: gnome-nibbles
+  - name: iagno
+  - name: lightsoff
+  - name: four-in-a-row
+  - name: gnome-robots
+  - name: pegsolitaire
+  - name: gnome-2048
+  - name: hitori
+  - name: gnome-klotski
+  - name: gnome-mines
+  - name: gnome-mahjongg
+  - name: gnome-sudoku
+  - name: quadrapassel
+  - name: swell-foop
+  - name: gnome-tetravex
+  - name: gnome-taquin
+  - name: five-or-more
+  - name: tali

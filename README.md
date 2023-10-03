@@ -1,10 +1,13 @@
 ## linux-workstation
 Define a debian12 desktop enviroment without an artifact or provisioning-server via $ ansible-pull
 
-### image
+### usage with debian 12 already running on the workstation
+`ansible-playbook local.yml --ask-become-pass -e "user=$USER"`
+
+### base image
 https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/
 
-### basis debian12 installation
+### base debian12 install
 1. Graphical install
 2. Sprache: Deutsch
 3. Standort: Deutschland
@@ -53,6 +56,8 @@ https://extensions.gnome.org/extension/1462/panel-date-format/
 https://extensions.gnome.org/extension/1160/dash-to-panel/
 
 ### todo
+- [ ] move from README.md todo to github issues
+- [ ] switch branchprune script to binary install from external source
 - [ ] add shell extensions and pinned icons (gnome configuration via standard gnome extension install + script)
 - [ ] explore preseed config to streamline debian install
 - [ ] streamline post install with a wrapper / bootstrap.sh
@@ -64,23 +69,3 @@ https://www.geany.org/download/themes/
     "files.associations": {
         "main.yml": "ansible",
   },
-
-- [x] add ssh config to not strictly check hostkeys for the dev domain (rapid host creation and destruction)
-ansible block in file
-`nano ~/.ssh/config`
-Host *infra-code.de
-StrictHostKeyChecking no
-User dev
-- [x] add ll alias & standard terminal colors
-- [x] add git plumbing alias "branchprune" (e.g. delete all local branches without a remote and prune origin)
-`git fetch -p && for branch in $(git for-each-ref --format '%(refname) %(upstream:track)' refs/heads | awk '$2 == "[gone]" {sub("refs/heads/", "", $1); print $1}'); do git branch -D $branch; done`
-- [x] streamline after debian install / bootstrap.sh & command
-- [x] install jetbrains mono font
-- [x] add min, max close window buttons in the top right corner & shortcuts
-- [x] add installation of task/taskfile https://taskfile.dev/installation/ deb or tar.gz via github latest / no repos that we know of, so needs another install logic/method
-https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
-- [x] remove all non wanted apps (games, ..) still on the system from base debian + gnome install
-some remain, better solved with minimal image
-- [x] add installation of terraform
-- [x] add installation of seafile
-- [x] debug installation of teamviewer

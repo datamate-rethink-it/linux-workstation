@@ -79,28 +79,33 @@
   when: (item.name is defined) and (item.name != "")
 
 # Binaries present
-- name: Download VMware Workstation Install binary, there is no flatpack or deb/apt release
+- name: Download binaries
   ansible.builtin.get_url:
     url: "{{ item.url }}"
     dest: "{{ item.location }}"
-    mode: -rwxr-xr-x
+    mode: '755'
+    owner: 'root'
+    group: 'root'
   loop: "{{ binaries_present }}"
-  when: (item.name is defined) and (item.name != "")
-  register: binary_download_output
+  when: (item.archive == false) and (item.name is defined) and (item.name != "")
 
-- name: Debug download output
-  ansible.builtin.debug:
-    var: binary_download_output
+- name: Download binary archives and selectivly unarchive
+  ansible.builtin.unarchive:
+    src: "{{ item.url }}"
+    dest: "{{ item.location }}"
+    include: "{{ item.include }}"
+    list_files: yes
+    remote_src: yes
+    mode: '755'
+    owner: 'root'
+    group: 'root'
+  loop: "{{ binaries_present }}"
+  when: (item.archive == true) and (item.name is defined) and (item.name != "")
+  register: binary_archive_output
 
-# - name: Untar archive
-#   ansible.builtin.unarchive:
-#     src: "{{ item.archive }}"
-#     dest: "{{ item.location }}"
-#     copy: false
-#     owner: "{{ item.owner }}"
-#     group: "{{ item.group }}"
-#     mode: "{{ item.mode }}"
-#   loop: "{{ archives }}"
-#   when: (item.archive is defined) and (item.archive != "") and (item.archive_flag is defined) and (item.archive_flag == true) and (item.location is defined) and (item.location != "")
-
-
+- name: Delete archive file after extraction
+  ansible.builtin.file:
+    path: "{{ item.location }}{{ item.url | basename }}"
+    state: absent
+  loop: "{{ binaries_present }}"
+  when: (item.archive == true) and (item.name is defined) and (item.name != "")
