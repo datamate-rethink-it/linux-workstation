@@ -27,10 +27,6 @@ apt_packages_present:
   - name: task
     deb_path: https://github.com/go-task/task/releases/latest/download/task_linux_amd64.deb
 
-  - name: exoscale-cli
-    key: https://raw.githubusercontent.com/datamate-rethink-it/linux-workstation/main/roles/linux-workstation/files/exoscale-cli-fingerprint
-    repo_url: deb [signed-by=/etc/apt/keyrings/exoscale] https://sos-ch-gva-2.exo.io/exoscale-packages/deb/cli stable main
-    repo_filename: exoscale
   - name: seafile-gui
     key: https://linux-clients.seafile.com/seafile.asc
     repo_url: deb [arch=amd64 signed-by=/etc/apt/keyrings/seafile] https://linux-clients.seafile.com/seafile-deb/{{ ansible_distribution_release }}/ stable main

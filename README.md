@@ -57,8 +57,8 @@ https://extensions.gnome.org/extension/1160/dash-to-panel/
 
 ### todo
 - [ ] move from README.md todo to github issues
-- [ ] find latest exoscale cli release (register) and install it via deb
-alternativly via apt / gpg
+- [ ] add key directory/name to the apt install logic
+- [ ] add register latest release from exoscale cli tool logic [link](https://github.com/exoscale/cli/releases/)
 - [ ] switch branchprune script to binary install from external source
 - [ ] add shell extensions and pinned icons (gnome configuration via standard gnome extension install + script)
 - [ ] explore preseed config to streamline debian install
