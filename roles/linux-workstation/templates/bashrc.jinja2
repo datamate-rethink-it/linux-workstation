@@ -5,8 +5,8 @@ if [ "$TERM" != "xterm-256color" ]; then
     export TERM=xterm-256color
 fi
 
-# Custom prompt based on UID
-if [ $UID -eq 0 ]; then
+# Custom prompt based on username
+if [ "$USER" = "root" ]; then
     # Prompt for root user
     export PS1='\
 \[$(tput bold; tput setaf 180)\]\u\
@@ -28,7 +28,6 @@ else
 \[$(tput sgr0; tput setaf 252)\]\$ \
 '
 fi
-
 
 alias ll="ls --color=auto -lisahF"
 alias grep="grep --color=auto"
