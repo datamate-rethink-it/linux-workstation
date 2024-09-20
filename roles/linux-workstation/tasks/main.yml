@@ -1,7 +1,4 @@
 - name: Include tasks/swap.yml in play
-  vars:
-    swap_space: "4G"
-    swap_file: "swapfile"
   ansible.builtin.include_tasks:
     file: tasks/swap.yml
 

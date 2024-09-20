@@ -56,7 +56,7 @@ sudo mv -f sources.list /etc/apt/sources.list
 
 ```shellscript
 sudo apt-get -y install git ansible && \
-ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "user=$USER" --clean --ask-become-pass
+ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "user=$USER" -e "swap_space=4G" --clean --ask-become-pass
 ```
 
 5. **reboot**
@@ -65,20 +65,8 @@ ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "use
    https://extensions.gnome.org/extension/1462/panel-date-format/
    https://extensions.gnome.org/extension/1160/dash-to-panel/
 
-7. Swap anlegen
+7. Sonstiges
 
-```
-sudo fallocate -l 2G /swapfile
-sudo chmod 600 /swapfile
-sudo mkswap /swapfile
-sudo swapon /swapfile
-# in /etc/fstab:
-# /swapfile swap swap defaults 0 0
-```
-
-8. Sonstiges
-
-- Swap Datei anlegen
 - Chrome Default Brower und Startseite https://auth.seatable.io
 - Geany automatisch speichern (Speicheraktionen)
 - ssh_keygen

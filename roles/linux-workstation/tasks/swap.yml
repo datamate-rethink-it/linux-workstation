@@ -1,7 +1,7 @@
 ---
 - name: set swap_file variable
   set_fact:
-    swap_file: /{{ swap_space }}.swap
+    swap_file: /swapfile
 
 - name: check if swap file exists
   stat:
