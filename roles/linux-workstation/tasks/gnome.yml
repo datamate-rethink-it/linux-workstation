@@ -23,18 +23,3 @@
   changed_when: true
   tags:
     - skip_ansible_lint
-
-- name: Disable system sounds in GNOME (disable event sounds)
-  become_user: "{{ user }}"
-  ansible.builtin.command:
-    cmd: "gsettings set org.gnome.desktop.sound event-sounds false"
-
-- name: Disable input feedback sounds (e.g., keypress sounds)
-  become_user: "{{ user }}"
-  ansible.builtin.command:
-    cmd: "gsettings set org.gnome.desktop.sound input-feedback-sounds false"
-
-- name: Mute system sounds using ALSA
-  become_user: "{{ user }}"
-  ansible.builtin.command:
-    cmd: "amixer set Master mute"

@@ -71,7 +71,6 @@ ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "use
 - Geany automatisch speichern (Speicheraktionen)
 - ssh_keygen
 - vscode: prettier und ...
-- Systemklänge aus
 
 ### todo
 
