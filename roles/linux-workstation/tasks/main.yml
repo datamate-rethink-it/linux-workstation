@@ -5,6 +5,7 @@
 - name: Include tasks/packages.yml in play
   ansible.builtin.include_tasks:
     file: tasks/packages.yml
+  when: skip_packages is not defined or skip_packages == false
 
 - name: Include tasks/config.yml in play
   ansible.builtin.include_tasks:

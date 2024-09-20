@@ -39,7 +39,7 @@
   become_user: "{{ user }}"
   ansible.builtin.command:
     cmd: >
-      gnome-extensions install --force https://extensions.gnome.org/extension-data/panel-date-formattimoplaetin.gmail.com.v7.shell-extension.zip
+      gnome-extensions install --force https://extensions.gnome.org/extension-data/panel-date-formatkeiii.github.com.v9.shell-extension.zip
   environment:
     DISPLAY: ":0"
     DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/1000/bus"
@@ -48,7 +48,7 @@
   become_user: "{{ user }}"
   ansible.builtin.command:
     cmd: >
-      gnome-extensions install --force https://extensions.gnome.org/extension-data/dash-to-paneljderose9.github.com.v50.shell-extension.zip
+      gnome-extensions install --force https://extensions.gnome.org/extension-data/dash-to-paneljderose9.github.com.v56.shell-extension.zip
   environment:
     DISPLAY: ":0"
     DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/1000/bus"
@@ -56,7 +56,7 @@
 - name: Enable Panel Date Format extension
   become_user: "{{ user }}"
   ansible.builtin.command:
-    cmd: "gnome-extensions enable panel-date-format@timoplaetin.gmail.com"
+    cmd: "gnome-extensions enable panel-date-format@keiii.github.com"
   environment:
     DISPLAY: ":0"
     DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/1000/bus"
