@@ -96,3 +96,4 @@ Weitere Optionen, die untertützt werden:
       "files.associations": {
       "main.yml": "ansible",
       },
+- [ ] stop if executed as root?!?
