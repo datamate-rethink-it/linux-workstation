@@ -55,7 +55,6 @@
     dest: "/etc/profile.d/global-bashrc.sh"
     mode: "0644"
     create: yes
-    state: present
 
 - name: Copy branchprune script to /usr/local/bin/ (PATH)
   ansible.builtin.copy:
