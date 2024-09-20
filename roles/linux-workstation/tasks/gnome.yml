@@ -23,3 +23,48 @@
   changed_when: true
   tags:
     - skip_ansible_lint
+
+## Gnome extensions
+- name: Install dependencies for GNOME extensions
+  become: true
+  apt:
+    name:
+      - gnome-shell-extensions
+      - chrome-gnome-shell
+      - jq
+    state: present
+    update_cache: yes
+
+- name: Install Panel Date Format extension
+  become_user: "{{ user }}"
+  ansible.builtin.command:
+    cmd: >
+      gnome-extensions install --force https://extensions.gnome.org/extension-data/panel-date-formattimoplaetin.gmail.com.v7.shell-extension.zip
+  environment:
+    DISPLAY: ":0"
+    DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/1000/bus"
+
+- name: Install Dash to Panel extension
+  become_user: "{{ user }}"
+  ansible.builtin.command:
+    cmd: >
+      gnome-extensions install --force https://extensions.gnome.org/extension-data/dash-to-paneljderose9.github.com.v50.shell-extension.zip
+  environment:
+    DISPLAY: ":0"
+    DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/1000/bus"
+
+- name: Enable Panel Date Format extension
+  become_user: "{{ user }}"
+  ansible.builtin.command:
+    cmd: "gnome-extensions enable panel-date-format@timoplaetin.gmail.com"
+  environment:
+    DISPLAY: ":0"
+    DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/1000/bus"
+
+- name: Enable Dash to Panel extension
+  become_user: "{{ user }}"
+  ansible.builtin.command:
+    cmd: "gnome-extensions enable dash-to-panel@jderose9.github.com"
+  environment:
+    DISPLAY: ":0"
+    DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/1000/bus"

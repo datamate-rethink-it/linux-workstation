@@ -10,7 +10,7 @@
 
 - name: create swap file
   become: true
-  command: fallocate -l {{ swap_space }} {{ swap_file }}
+  command: fallocate -l {{ swap_size | default('4G') }} {{ swap_file }}
   when: not swap_file_check.stat.exists
 
 - name: set permissions on swap file

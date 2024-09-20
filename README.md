@@ -8,7 +8,7 @@ Define a debian12 desktop enviroment without an artifact or provisioning-server 
 
 ### base image
 
-https://cdimage.debian.org/debian-cd/current/amd64/iso-dvd/
+https://www.debian.org/download
 
 ### base debian12 install
 
@@ -56,16 +56,20 @@ sudo mv -f sources.list /etc/apt/sources.list
 
 ```shellscript
 sudo apt-get -y install git ansible && \
-ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "user=$USER" -e "swap_space=4G" --clean --ask-become-pass
+ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "user=$USER" --clean --ask-become-pass
 ```
 
-5. **reboot**
+Weitere Optionen, die untertützt werden:
 
-6. Install Shell Extensions and pin Apps -> installation via "extension-manager".
+- -e "swap_size=4G" (default 4G)
+
+1. **reboot**
+
+2. Install Shell Extensions and pin Apps -> installation via "extension-manager".
    https://extensions.gnome.org/extension/1462/panel-date-format/
    https://extensions.gnome.org/extension/1160/dash-to-panel/
 
-7. Sonstiges
+3. Sonstiges
 
 - Chrome Default Brower und Startseite https://auth.seatable.io
 - Geany automatisch speichern (Speicheraktionen)
