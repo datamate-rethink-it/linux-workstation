@@ -1,6 +1,7 @@
 - name: Include tasks/swap.yml in play
   ansible.builtin.include_tasks:
     file: tasks/swap.yml
+  when: skip_swap is not defined or skip_swap == false
 
 - name: Include tasks/packages.yml in play
   ansible.builtin.include_tasks:

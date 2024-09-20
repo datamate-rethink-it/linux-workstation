@@ -53,6 +53,16 @@
     DISPLAY: ":0"
     DBUS_SESSION_BUS_ADDRESS: "unix:path=/run/user/1000/bus"
 
+- name: Restart GNOME Shell for X11
+  command: >
+    gnome-shell --replace &
+  when: ansible_env.XDG_SESSION_TYPE == "x11"
+
+- name: Log out for Wayland (not automated)
+  debug:
+    msg: "Please log out and log back in to apply the changes for Wayland sessions."
+  when: ansible_env.XDG_SESSION_TYPE == "wayland"
+
 - name: Enable Panel Date Format extension
   become_user: "{{ user }}"
   ansible.builtin.command:

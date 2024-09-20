@@ -61,7 +61,11 @@ ansible-pull -U https://github.com/datamate-rethink-it/linux-workstation -e "use
 
 Weitere Optionen, die untertützt werden:
 
-- -e "swap_size=4G" (default 4G)
+```bash
+-e "swap_size=4G"           # default 4G
+-e "skip_packages=true"     # default false
+-e "skip_swap=true"         # default false
+```
 
 1. **reboot**
 
