@@ -1,5 +1,4 @@
 ---
-
 - name: Set Panel Date Format
   become_user: "{{ user }}"
   community.general.dconf:
