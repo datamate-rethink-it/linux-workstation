@@ -1,10 +1,10 @@
-## linux-workstation
+## SeaTable linux-workstation
 
-Define a debian12 desktop enviroment without an artifact or provisioning-server via $ ansible-pull
+Define a debian12 desktop enviroment without an artifact or provisioning-server via `$ ansible-pull`
 
 ### usage with debian 12 already running on the workstation
 
-`ansible-playbook local.yml --ask-become-pass -e "user=$USER"`
+`ansible-playbook local.yml --ask-become-pass -e "user=$USER" -e "skip_swap=true"`
 
 ### base image
 
@@ -69,13 +69,13 @@ Weitere Optionen, die untertützt werden:
 
 1. **reboot**
 
-2. Install Shell Extensions and pin Apps -> installation via "extension-manager".
-   https://extensions.gnome.org/extension/1462/panel-date-format/
-   https://extensions.gnome.org/extension/1160/dash-to-panel/
+Execute again, damit gnome extensions wirklich geladen
 
-3. Sonstiges
+3. Aktiviten:
 
-- Chrome Default Brower und Startseite https://auth.seatable.io
+- Chrome Default Brower und Startseite https://auth.seatable.io und https://cloud.seatable.io
+- Iconsize bei Panel-Dash auf 42px und nach oben verschieben
+- Thunderbird mit Mail und Kalender einrichten
 - Geany automatisch speichern (Speicheraktionen)
 - ssh_keygen
 - vscode: prettier und ...
