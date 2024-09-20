@@ -9,27 +9,27 @@
   register: swap_file_check
 
 - name: create swap file
-  sudo: yes
+  become: true
   command: fallocate -l {{ swap_space }} {{ swap_file }}
   when: not swap_file_check.stat.exists
 
 - name: set permissions on swap file
-  sudo: yes
+  become: true
   file:
     path: "{{ swap_file }}"
     mode: 0600
 
 - name: format swap file
-  sudo: yes
+  become: true
   command: mkswap {{ swap_file }}
 
 - name: add to fstab
-  sudo: yes
+  become: true
   lineinfile:
     dest: /etc/fstab
     regexp: "{{ swap_file }}"
     line: "{{ swap_file }} none swap sw 0 0"
 
 - name: turn on swap
-  sudo: yes
+  become: true
   command: swapon -a
