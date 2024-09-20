@@ -54,7 +54,6 @@
     src: "bashrc.jinja2"
     dest: "/etc/profile.d/global-bashrc.sh"
     mode: "0644"
-    create: yes
 
 - name: Copy branchprune script to /usr/local/bin/ (PATH)
   ansible.builtin.copy:
