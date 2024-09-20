@@ -53,13 +53,6 @@ binaries_present:
     include: [hcloud]
     archive: true
 
-    # to install this package: $ sudo ./usr/local/bin/<actual-vmware-binary>
-    # could be automated via register results - get binary name / call with "--deferred-gtk" option
-  - name: vmware-workstation
-    url: https://www.vmware.com/go/getworkstation-linux
-    location: /usr/local/bin/
-    archive: false
-
 apt_packages_absent:
   - name: libreoffice-common
   - name: libreoffice-core
