@@ -74,6 +74,7 @@ Execute again, damit gnome extensions wirklich geladen
 3. Aktiviten:
 
 - Chrome Default Brower und Startseite https://auth.seatable.io und https://cloud.seatable.io
+- `sudo flatpak override com.google.Chrome --persist=.pki` ausführen, damit Chrome die mTLS-Zertifikate nicht verliert
 - Iconsize bei Panel-Dash auf 42px und nach oben verschieben
 - Thunderbird mit Mail und Kalender einrichten
 - Geany automatisch speichern (Speicheraktionen)
